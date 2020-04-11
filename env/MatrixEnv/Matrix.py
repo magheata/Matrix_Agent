@@ -8,8 +8,8 @@ class Matrix(discrete.DiscreteEnv):
 
     def __init__(self):
         self.shape = np.zeros(shape=(5, 5))
-        self.dest_loc = (4, 3)
-        agent_loc = (0, 0)
+        self.dest_loc = (3, 1)
+        agent_loc = (0, 4)
         num_states = 5 * 5
         num_rows = 5
         num_columns = 5
@@ -51,11 +51,12 @@ class Matrix(discrete.DiscreteEnv):
                         done = True
 
                     new_state = self.encode(new_row, new_col)
-                    P[state][action].append((1.0, new_state, reward, done))
+                    P[state][action].append((new_state, reward, done))
 
         super(Matrix, self).__init__(num_states, num_actions, P, initial_state_distrib)
 
     def step(self, action):
+        return self.P[self.s][action]
         ...
 
     def reset(self):
@@ -68,7 +69,6 @@ class Matrix(discrete.DiscreteEnv):
         ...
 
     def encode(self, row, col):
-        # (5) 5, 5, 4
         i = row
         i *= 5
         i += col
