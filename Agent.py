@@ -34,8 +34,9 @@ if __name__ == '__main__':
     best_reward = 99999
     state = env.reset()
     best_action = 0
-    env.s = env.encode(0, 0)
+    env.s = env.encode(agent_pos[0], agent_pos[1])
     env.render()
+    print("[%d, %d]" % (agent_pos[0], agent_pos[1]))
     while not done:
         initial_state = env.s
         for action_idx in range(len(agent.movements)):
