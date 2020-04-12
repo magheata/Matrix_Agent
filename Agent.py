@@ -1,12 +1,14 @@
 import gym
 
+
 class Agent(object):
     """The world's simplest agent!"""
 
     def __init__(self, action_space):
         self.action_space = action_space
+        self.movements = [0, 1, 2, 3]
 
-    def act(self, observation, reward, done):
+    def act(self, state, reward, done):
         return self.action_space.sample()
 
 
@@ -19,7 +21,6 @@ if __name__ == '__main__':
     # will be namespaced). You can also dump to a tempdir if you'd
     # like: tempfile.mkdtemp().
     outdir = '/tmp/random-agent-results'
-    #env = wrappers.Monitor(env, directory=outdir, force=True)
     env.seed(0)
     agent = Agent(env.action_space)
 
@@ -27,24 +28,29 @@ if __name__ == '__main__':
     reward = 999
     done = False
 
-    movements = [0, 1, 2, 3]
-
     agent_pos = (0, 4)
 
-    length = len(movements)
     best_state = 0
     best_reward = 99999
+    state = env.reset()
+    best_action = 0
+    env.s = env.encode(0, 0)
+    env.render()
     while not done:
-        for mov_idx in range(length):
-            result = env.step(movements[mov_idx])
-            new_state = result[0][0]
-            new_position = env.decode(new_state)
-            if (result[0][1] < best_reward):
-                best_reward = result[0][1]
-                best_state = result[0][0]
-        done = result[0][2]
-        env.s = best_state
+        initial_state = env.s
+        for action_idx in range(len(agent.movements)):
+            env.s = initial_state
+            next_state, reward, done, _ = env.step(agent.movements[action_idx])
+            if reward < best_reward:
+                best_action = action_idx
+                best_reward = reward
+                best_state = next_state
+        env.s = initial_state
+        current_state, reward, done, _ = env.step(agent.movements[best_action])
+        if done:
+            break
         new_position = env.decode(env.s)
+        env.render()
         print(list(new_position))
 
     env.close()

@@ -1,15 +1,28 @@
+import sys
 import numpy as np
+import gym
+from six import StringIO
 from gym.envs.toy_text import discrete
 from scipy.spatial import distance
 
+MAP = [
+    "+---------+",
+    "|_|_|_|_|_|",
+    "|_|_|_|_|_|",
+    "|_|_|_|_|_|",
+    "|_|_|_|_|_|",
+    "|_|_|_|_|_|",
+    "+---------+",
+]
 
 class Matrix(discrete.DiscreteEnv):
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
+        self.desc = np.asarray(MAP, dtype='c')
         self.shape = np.zeros(shape=(5, 5))
-        self.dest_loc = (3, 1)
-        agent_loc = (0, 4)
+        self.dest_loc = (4, 4)
+        agent_loc = (0, 0)
         num_states = 5 * 5
         num_rows = 5
         num_columns = 5
@@ -51,13 +64,9 @@ class Matrix(discrete.DiscreteEnv):
                         done = True
 
                     new_state = self.encode(new_row, new_col)
-                    P[state][action].append((new_state, reward, done))
+                    P[state][action].append((1.0, new_state, reward, done))
 
         super(Matrix, self).__init__(num_states, num_actions, P, initial_state_distrib)
-
-    def step(self, action):
-        return self.P[self.s][action]
-        ...
 
     def reset(self):
         ...
@@ -81,3 +90,19 @@ class Matrix(discrete.DiscreteEnv):
         out.append(i)
         assert 0 <= i < 5
         return reversed(out)
+
+    def render(self, mode='human'):
+        outfile = StringIO() if mode == 'ansi' else sys.stdout
+
+        out = self.desc.copy().tolist()
+        out = [[c.decode('utf-8') for c in line] for line in out]
+        taxi_row, taxi_col = self.decode(self.s)
+
+        def ul(x): return "_" if x == " " else x
+
+        out[1 + taxi_row][2 * taxi_col + 1] = gym.utils.colorize(
+            ul(out[1 + taxi_row][2 * taxi_col + 1]), 'blue', highlight=True)
+
+        di, dj = self.dest_loc
+        out[1 + di][2 * dj + 1] = gym.utils.colorize(out[1 + di][2 * dj + 1], 'magenta', highlight=True)
+        outfile.write("\n".join(["".join(row) for row in out]) + "\n")
