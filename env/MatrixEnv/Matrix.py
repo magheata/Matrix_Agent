@@ -1,9 +1,9 @@
 import sys
 import numpy as np
 import gym
+from scipy.spatial import distance
 from six import StringIO
 from gym.envs.toy_text import discrete
-from scipy.spatial import distance
 
 MAP = [
     "+---------+",
@@ -18,18 +18,22 @@ MAP = [
 class Matrix(discrete.DiscreteEnv):
     metadata = {'render.modes': ['human']}
 
-    def __init__(self):
+    def __init__(self, **kwargs):
+        self._kwargs = {} if kwargs is None else kwargs
+
         self.desc = np.asarray(MAP, dtype='c')
-        self.shape = np.zeros(shape=(5, 5))
-        self.dest_loc = (4, 4)
+        self.dimension = kwargs.get('dimension')
+        num_rows = self.dimension
+        num_columns = self.dimension
+        self.shape = np.zeros(shape=(num_rows, num_columns))
+        self.dest_loc = kwargs.get('goal')
         agent_loc = (0, 0)
-        num_states = 5 * 5
-        num_rows = 5
-        num_columns = 5
-        max_row = num_rows - 1
-        max_col = num_columns - 1
+        num_states = self.dimension * self.dimension
+
+        self.max_row = num_rows - 1
+        self.max_col = num_columns - 1
         initial_state_distrib = np.zeros(num_states)
-        num_actions = 4
+        num_actions = kwargs.get('actions')
 
         P = {state: {action: [] for action in range(num_actions)} for state in range(num_states)}
         for row in range(num_rows):
@@ -44,27 +48,17 @@ class Matrix(discrete.DiscreteEnv):
                     agent_loc = (row, col)
 
                     if action == 0:
-                        new_row = min(row + 1, max_row)
-                        position = (new_row, col)
-                        reward = distance.cityblock(position, self.dest_loc)  # calcular distancia Manhattan
+                        new_row = min(row + 1, self.max_row)
                     elif action == 1:
                         new_row = max(row - 1, 0)
-                        position = (new_row, col)
-                        reward = distance.cityblock(position, self.dest_loc)  # calcular distancia Manhattan
                     elif action == 2:
-                        new_col = min(col + 1, max_col)
-                        position = (row, new_col)
-                        reward = distance.cityblock(position, self.dest_loc)  # calcular distancia Manhattan
+                        new_col = min(col + 1, self.max_col)
                     elif action == 3:
                         new_col = max(col - 1, 0)
-                        position = (row, new_col)
-                        reward = distance.cityblock(position, self.dest_loc)  # calcular distancia Manhattan
-
                     if agent_loc == self.dest_loc:
                         done = True
-
                     new_state = self.encode(new_row, new_col)
-                    P[state][action].append((1.0, new_state, reward, done))
+                    P[state][action].append((1.0, new_state, done))
 
         super(Matrix, self).__init__(num_states, num_actions, P, initial_state_distrib)
 
@@ -82,6 +76,31 @@ class Matrix(discrete.DiscreteEnv):
         i *= 5
         i += col
         return i
+
+    def step_action(self, action):
+        current_position = list(self.decode(self.s))
+        row = current_position[0]
+        col = current_position[1]
+
+        if action == 0:
+            new_row = min(row + 1, self.max_row)
+            position = (new_row, col)
+        elif action == 1:
+            new_row = max(row - 1, 0)
+            position = (new_row, col)
+
+        elif action == 2:
+            new_col = min(col + 1, self.max_col)
+            position = (row, new_col)
+        elif action == 3:
+            new_col = max(col - 1, 0)
+            position = (row, new_col)
+
+        reward = distance.cityblock(position, self.dest_loc)  # calcular distancia Manhattan
+
+        self.s = self.encode(position[0], position[1])
+
+        return self.s, reward, position == self.dest_loc
 
     def decode(self, i):
         out = []
