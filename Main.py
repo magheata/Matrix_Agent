@@ -1,47 +1,32 @@
+from DQNAgent import DQNAgent
+
 import gym
 
-from Agent import Agent
+EPISODES = 5000
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     env = gym.make("env:MatrixEnv-v0")
-    env.seed(0)
-
-    agent = Agent(env.action_space)
-
-    episode_count = 100
-    reward = 999
+    state_size = env.observation_space.n
+    action_size = env.action_space.n
+    agent = DQNAgent(state_size, action_size)
+    # agent.load("./save/cartpole-ddqn.h5")
     done = False
+    batch_size = 32
 
-    agent_pos = (0, 0)
-
-    best_state = 0
-    best_reward = 99999
-
-    state = env.reset()
-    best_action = 0
-
-    env.s = env.encode(agent_pos[0], agent_pos[1])
-    env.render()
-    print("[%d, %d]" % (agent_pos[0], agent_pos[1]))
-    while not done:
-        initial_state = env.s
-        for action_idx in range(len(agent.movements)):
-            env.s = initial_state
-            next_state, reward, doneRr = env.step_action(agent.movements[action_idx])
-            if reward < best_reward:
-                best_action = action_idx
-                best_reward = reward
-                best_state = next_state
-        env.s = initial_state
-        current_state, reward, done = env.step_action(agent.movements[best_action])
-        if done:
-            new_position = env.decode(env.s)
-            env.render()
-            print(list(new_position))
-            break
-        new_position = env.decode(env.s)
-        env.render()
-        print(list(new_position))
-
-    env.close()
+    for e in range(EPISODES):
+        state = env.reset()
+        for time in range(500):
+            # env.render()
+            action = agent.act(state)
+            next_state, reward, done = env.step_action(action)
+            agent.memorize(state, action, reward, next_state, done)
+            state = next_state
+            if done:
+                agent.update_target_model()
+                print("episode: {}/{}, score: {}, e: {:.2}"
+                      .format(e, EPISODES, time, agent.epsilon))
+                break
+            if len(agent.memory) > batch_size:
+                agent.replay(batch_size)
+        # if e % 10 == 0:
+        #     agent.save("./save/cartpole-ddqn.h5")
