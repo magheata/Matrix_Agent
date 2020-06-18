@@ -4,7 +4,6 @@ import gym
 from gym.vector.utils import spaces
 from scipy.spatial import distance
 from six import StringIO
-from gym.envs.toy_text import discrete
 
 MAP = [
     "+---------+",
@@ -33,7 +32,9 @@ class Matrix(gym.Env):
         self.max_col = self.num_columns - 1
         self.terminal_state = kwargs.get('goal')
         self.start_state = kwargs.get('start_state')
-        self.s = self.encode(self.start_state[0], self.start_state[1])
+        self.s = np.zeros((self.dimension, self.dimension))
+        self.s[self.start_state[0], self.start_state[1]] = 1
+        self.s[self.terminal_state[0], self.terminal_state[1]] = 2
 
     def reset(self):
         ...
@@ -53,9 +54,10 @@ class Matrix(gym.Env):
     def step_action(self, action):
         assert self.action_space.contains(action)
 
-        current_position = list(self.decode(self.s))
+        current_position = np.where(self.s == 1)
         row = current_position[0]
         col = current_position[1]
+        self.s[row, col] = 0
 
         if action == 0:
             new_row = min(row + 1, self.max_row)
@@ -72,7 +74,7 @@ class Matrix(gym.Env):
 
         reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
 
-        self.s = self.encode(position[0], position[1])
+        self.s[position[0], position[1]] = 1
 
         return self.s, reward, position == self.terminal_state
 

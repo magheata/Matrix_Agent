@@ -40,9 +40,9 @@ class DQNAgent:
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(24, input_dim=self.state_size, activation='relu'))
-        model.add(Dense(24, activation='relu'))
-        model.add(Dense(self.action_size, activation='linear'))
+        model.add(Dense(self.state_size, input_dim=self.state_size, activation='relu'))
+        #model.add(Dense(5, activation='relu'))
+        #model.add(Dense(self.action_size, activation='linear'))
         model.compile(loss=self._huber_loss,
                       optimizer=Adam(lr=self.learning_rate))
         return model
@@ -63,7 +63,8 @@ class DQNAgent:
     def replay(self, batch_size):
         minibatch = random.sample(self.memory, batch_size)
         for state, action, reward, next_state, done in minibatch:
-            target = self.model.predict(state)
+            reshaped_state = np.reshape(state, self.state_size)
+            target = self.model.predict(reshaped_state, steps=10)
             if done:
                 target[0][action] = reward
             else:
