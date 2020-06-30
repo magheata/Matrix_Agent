@@ -1,3 +1,4 @@
+from Action import Action
 from DQNAgent import DQNAgent
 
 import gym
@@ -11,22 +12,35 @@ if __name__ == "__main__":
     agent = DQNAgent(state_size, action_size)
     done = False
     batch_size = 32
-    #print(env.s)
+    print(env.s)
     for e in range(EPISODES):
-        state = env.reset()
+        actions = []
+        env_states = []
+        state = env.reset_action()
+        print(e, env.s)
+
         for time in range(20):
             # env.render()
+            env_states.append(env.s.copy())
             action = agent.act(state)
             next_state, reward, done = env.step_action(action)
             agent.memorize(state, action, reward, next_state, done)
             state = next_state
+            actions.append(action)
+            #print(e, env.s)
+
             if done:
-                agent.update_target_model()
+                actions_enum = []
+                for i in actions:
+                    actions_enum.append(Action(i))
                 print("episode: {}/{}, score: {}, e: {:.2}"
                       .format(e, EPISODES, time, agent.epsilon))
+                print("Total actions: ", len(actions_enum), actions_enum)
+                print(*env_states, sep=", \n\n")
+                print(env.s)
+                agent.update_target_model()
                 break
             if len(agent.memory) > batch_size:
                 agent.replay(batch_size)
-    #print(state)
         # if e % 10 == 0:
         #     agent.save("./save/cartpole-ddqn.h5")

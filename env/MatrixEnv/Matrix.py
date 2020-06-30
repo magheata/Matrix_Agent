@@ -35,9 +35,11 @@ class Matrix(gym.Env):
         self.s = np.zeros((self.dimension, self.dimension))
         self.s[self.start_state[0], self.start_state[1]] = 1
         self.s[self.terminal_state[0], self.terminal_state[1]] = 2
+        self.initial_state = self.s.copy()
 
-    def reset(self):
-        ...
+    def reset_action(self):
+        self.s = self.initial_state.copy()
+        return self.s
 
     def render(self, mode='human'):
         ...
@@ -53,7 +55,8 @@ class Matrix(gym.Env):
 
     def step_action(self, action):
         assert self.action_space.contains(action)
-
+        penalty = 5
+        use_penalty = False
         current_position = np.where(self.s == 1)
         row = current_position[0]
         col = current_position[1]
@@ -61,18 +64,29 @@ class Matrix(gym.Env):
 
         if action == 0:
             new_row = min(row + 1, self.max_row)
+            if row + 1 > self.max_row:
+                use_penalty = True
             position = (new_row, col)
         elif action == 1:
             new_row = max(row - 1, 0)
+            if row - 1 < 0:
+                use_penalty = True
             position = (new_row, col)
         elif action == 2:
             new_col = min(col + 1, self.max_col)
+            if col + 1 > self.max_col:
+                use_penalty = True
             position = (row, new_col)
         elif action == 3:
             new_col = max(col - 1, 0)
+            if col - 1 < 0:
+                use_penalty = True
             position = (row, new_col)
 
         reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
+
+        if use_penalty:
+            reward = reward + penalty
 
         self.s[position[0], position[1]] = 1
 
