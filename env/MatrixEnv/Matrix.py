@@ -42,21 +42,52 @@ class Matrix(gym.Env):
         self.initial_state = self.s.copy()
         self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
 
-    def reset_action(self):
-        self.s = self.initial_state.copy()
-        return self.s
-
     def render(self, mode='human'):
-        ...
+        outfile = StringIO() if mode == 'ansi' else sys.stdout
 
-    def close(self):
-        ...
+        out = self.desc.copy().tolist()
+        out = [[c.decode('utf-8') for c in line] for line in out]
+        taxi_row, taxi_col = self.decode(self.s)
 
+        def ul(x): return "_" if x == " " else x
+
+        out[1 + taxi_row][2 * taxi_col + 1] = gym.utils.colorize(
+            ul(out[1 + taxi_row][2 * taxi_col + 1]), 'blue', highlight=True)
+
+        di, dj = self.dest_loc
+        out[1 + di][2 * dj + 1] = gym.utils.colorize(out[1 + di][2 * dj + 1], 'magenta', highlight=True)
+        outfile.write("\n".join(["".join(row) for row in out]) + "\n")
+
+    # region STATE
     def encode(self, row, col):
         i = row
         i *= self.dimension
         i += col
         return i
+
+    def decode(self, i):
+        out = [i % self.dimension]
+        i = i // self.dimension
+        out.append(i)
+        assert 0 <= i < self.dimension
+        return reversed(out)
+
+    def reset_action(self):
+        self.s = self.initial_state.copy()
+        return self.s
+    # endregion
+
+    # region STEP
+    def step(self, action):
+        pass
+
+    def step_action(self, action, steps_taken):
+        assert self.action_space.contains(action)
+        row, col = self.get_pos_components()
+        self.s[row, col] = 0
+        position, use_penalty = self.get_next_position(action, row, col)
+        self.s[position[0], position[1]] = 1
+        return self.s, self.determine_reward(position, use_penalty, steps_taken), position == self.terminal_state
 
     def get_next_position(self, action, row, col):
         parsed_action = Action(action)
@@ -84,56 +115,26 @@ class Matrix(gym.Env):
             position = (row, new_col)
         return position, use_penalty
 
-    def step_action(self, action, steps_taken):
-        assert self.action_space.contains(action)
-        row, col = self.get_pos_components()
-        self.s[row, col] = 0
-        position, use_penalty = self.get_next_position(action, row, col)
-        self.s[position[0], position[1]] = 1
-        return self.s, self.determine_reward(position, use_penalty, steps_taken), position == self.terminal_state
+    def get_pos_components(self):
+        current_position = np.where(self.s == 1)
+        return current_position[0], current_position[1]
 
+    # endregion
+
+    # region REWARD
     def determine_reward(self, position, use_penalty, steps_taken):
         reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
 
         if use_penalty:
             reward = reward + Constants.PENALTY_OUT_OF_RANGE
 
-        #mirar max acciones
-
-        if steps_taken < self.distance_from_start_to_goal:
-            reward = reward + Constants.REWARD_WITHIN_DISTANCE
+        # mirar max acciones
 
         return reward
-
-    def get_pos_components(self):
-        current_position = np.where(self.s == 1)
-        return current_position[0], current_position[1]
-
-    def decode(self, i):
-        out = [i % self.dimension]
-        i = i // self.dimension
-        out.append(i)
-        assert 0 <= i < self.dimension
-        return reversed(out)
-
-    def render(self, mode='human'):
-        outfile = StringIO() if mode == 'ansi' else sys.stdout
-
-        out = self.desc.copy().tolist()
-        out = [[c.decode('utf-8') for c in line] for line in out]
-        taxi_row, taxi_col = self.decode(self.s)
-
-        def ul(x): return "_" if x == " " else x
-
-        out[1 + taxi_row][2 * taxi_col + 1] = gym.utils.colorize(
-            ul(out[1 + taxi_row][2 * taxi_col + 1]), 'blue', highlight=True)
-
-        di, dj = self.dest_loc
-        out[1 + di][2 * dj + 1] = gym.utils.colorize(out[1 + di][2 * dj + 1], 'magenta', highlight=True)
-        outfile.write("\n".join(["".join(row) for row in out]) + "\n")
-
-    def step(self, action):
-        pass
+    # endregion
 
     def reset(self):
+        pass
+
+    def close(self):
         pass

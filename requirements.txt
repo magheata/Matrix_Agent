@@ -1,4 +1,8 @@
-numpy
-keras
-gym
-tensorflow
+numpy~=1.17.4
+keras~=2.3.1
+gym~=0.17.1
+tensorflow~=2.0.0
+scipy~=1.3.2
+six~=1.13.0
+matplotlib~=3.1.1
+setuptools~=46.1.3
