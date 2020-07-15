@@ -1,10 +1,10 @@
 import random
 import numpy as np
 from collections import deque
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from keras.models import Sequential
+from keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 import tensorflow as tf
 
@@ -12,7 +12,7 @@ import Constants
 
 
 class DQNAgent:
-    def __init__(self, state_size, action_size, new_model):
+    def __init__(self, state_size, action_size, use_existing_model, requested_model):
         self.state_size = state_size
         self.dim = int(np.sqrt(self.state_size))
         self.action_size = action_size
@@ -22,12 +22,11 @@ class DQNAgent:
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.99
         self.learning_rate = 0.001
-        if new_model:
-            self.model = self._build_model()
-            self.target_model = self._build_model()
-            self.update_target_model()
-        else:
-            self.load_model()
+        self.model = self._build_model()
+        self.target_model = self._build_model()
+        if use_existing_model:
+            self.load_weights(requested_model)
+        self.update_target_model()
 
     """Huber loss for Q Learning
     References: https://en.wikipedia.org/wiki/Huber_loss
@@ -124,12 +123,10 @@ class DQNAgent:
         reshaped_target = np.reshape(target, (size, size))
         return reshaped_target
 
-    def save_model(self):
-        self.model.save(Constants.MODEL_FILE)
+    def save_model(self, model_name):
+        self.model.save(model_name)
 
-    def load_model(self):
-        self.model = tf.keras.models.load_model(Constants.MODEL_FILE, compile=False)
-        self.model.compile(loss=self._huber_loss, optimizer=Adam(lr=self.learning_rate))
-        self.target_model = self.model
-        self.update_target_model()
-
+    def load_weights(self, requested_model):
+        existing_model = tf.keras.models.load_model(requested_model, compile=False)
+        self.model = self._build_model()
+        self.model.set_weights(existing_model.get_weights())

@@ -1,6 +1,8 @@
 from Action import Action
 from DQNAgent import DQNAgent
 
+import tkinter as tk
+
 import os
 import matplotlib.pyplot as plt
 import gym
@@ -10,13 +12,13 @@ import GraphService as graphService
 
 import tensorflow as tf
 from tensorflow import keras
-
+from os import listdir
+from os.path import isfile, join
 from Domain.EpisodeResult import EpisodeResult
 
-EPISODES = 10
+EPISODES = 50
 
 TOTAL_SAMPLES = 10
-
 
 def plot(solved_episodes):
     plt(EPISODES * TOTAL_SAMPLES, solved_episodes)
@@ -70,15 +72,28 @@ if __name__ == "__main__":
     state_size = env.observation_space.n
     action_size = env.action_space.n
 
-    if len(os.listdir(os.getcwd() + '/model')) != 0:
+    total_models = len(os.listdir(os.getcwd() + '/model'))
+    if total_models != 0:
         use_saved_model = input('Another model already exists, use existing model? y/n: ')
         if (use_saved_model == 'y') or (use_saved_model == 'Y'):
-            agent = DQNAgent(state_size, action_size, False)
+            onlyfiles = [f for f in listdir(os.getcwd() + '/model') if isfile(join(os.getcwd() + '/model', f))]
+            print(onlyfiles)
+            requested_model = input('Enter the model you want to use from the saved models: ')
+            created_agent = False
+            while not created_agent:
+                if requested_model in onlyfiles:
+                    agent = DQNAgent(state_size, action_size, True, 'model/' + requested_model)
+                    created_agent = True
+                else:
+                    print("Model does not exists. \n")
+                    requested_model = input('Enter the model you want to use from the saved models: ')
         else:
-            agent = DQNAgent(state_size, action_size, True)
+            agent = DQNAgent(state_size, action_size, False, '')
+    else:
+        agent = DQNAgent(state_size, action_size, False, '')
 
+    #print(agent.model.get_weights())
     batch_size = 32
-
     episode_results = []
     samples_results = {}
 
@@ -90,8 +105,7 @@ if __name__ == "__main__":
 
         steps_taken.append(steps_taken_for_completion)
 
-        episode_results.append(
-            EpisodeResult(EPISODES, steps_taken_for_completion, total_solved))
+        episode_results.append(EpisodeResult(EPISODES, steps_taken_for_completion, total_solved))
 
         print("episodes: {} total_solved: {}".format(EPISODES, total_solved))
         print("\n\n")
@@ -101,8 +115,9 @@ if __name__ == "__main__":
     graphService.create_boxplot_actions(steps_taken)
 
     save_model = input("Save user model? y/n : ")
-    print(save_model)
 
     if (save_model == 'y') or (save_model == 'Y'):
-        agent.save_model()
+        model_file_name = input('Enter file name: ')
+        agent.save_model('model/' + model_file_name)
+
 
