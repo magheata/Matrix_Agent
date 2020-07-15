@@ -68,6 +68,10 @@ def compute_episodes(total_episodes):
 
 if __name__ == "__main__":
 
+    window = tk.Tk()
+    label = tk.Label(text="Python rocks!")
+    label.pack()
+    window.mainloop()
     env = gym.make("env:MatrixEnv-v0")
     state_size = env.observation_space.n
     action_size = env.action_space.n
