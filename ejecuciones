@@ -1,0 +1,2972 @@
+episode: 9/30, score: 6, e: 0.21
+Total actions:  7 [<Action.RIGHT: 2>, <Action.DOWN: 0>, <Action.RIGHT: 2>, <Action.DOWN: 0>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.UP: 1>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 10/30, score: 4, e: 0.2
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+/Users/andreea/opt/anaconda3/envs/conda-test/bin/python /Users/andreea/PycharmProjects/MatrixAgent/Main.py
+Using TensorFlow backend.
+2020-07-02 10:41:25.794349: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-07-02 10:41:25.794605: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+episode: 6/30, score: 4, e: 0.4
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>, <Action.RIGHT: 2>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 7/30, score: 6, e: 0.37
+Total actions:  7 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 8/30, score: 5, e: 0.36
+Total actions:  6 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.UP: 1>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 9/30, score: 6, e: 0.33
+Total actions:  7 [<Action.RIGHT: 2>, <Action.UP: 1>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.UP: 1>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 10/30, score: 8, e: 0.31
+Total actions:  9 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.DOWN: 0>, <Action.RIGHT: 2>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 11/30, score: 4, e: 0.3
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 12/30, score: 4, e: 0.28
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 13/30, score: 5, e: 0.27
+Total actions:  6 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.UP: 1>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 14/30, score: 5, e: 0.26
+Total actions:  6 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 15/30, score: 7, e: 0.24
+Total actions:  8 [<Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.DOWN: 0>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 1. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 16/30, score: 6, e: 0.23
+Total actions:  7 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 18/30, score: 4, e: 0.18
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 19/30, score: 8, e: 0.16
+Total actions:  9 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 20/30, score: 6, e: 0.15
+Total actions:  7 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 21/30, score: 4, e: 0.15
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 23/30, score: 6, e: 0.11
+Total actions:  7 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.LEFT: 3>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 24/30, score: 4, e: 0.11
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 25/30, score: 4, e: 0.11
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 26/30, score: 4, e: 0.1
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 27/30, score: 4, e: 0.097
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 28/30, score: 4, e: 0.093
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+episode: 29/30, score: 4, e: 0.09
+Total actions:  5 [<Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.RIGHT: 2>, <Action.DOWN: 0>]
+[[1. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 1. 0. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 1. 0. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]],
+
+[[0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 2.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 1.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]
+ [0. 0. 0. 0. 0.]]
+___________________________________________________
+
+
+sample 0
+episodes: 1 total_solved: 0
+episodes: 5 total_solved: 2
+episodes: 10 total_solved: 7
+
+
+
+sample 1
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 9
+
+
+
+sample 2
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 3
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 4
+episodes: 1 total_solved: 0
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 5
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 6
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 7
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 8
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+sample 9
+episodes: 1 total_solved: 1
+episodes: 5 total_solved: 5
+episodes: 10 total_solved: 10
+
+
+
+10
+sample 0, episode_result
+sample 0, episode_result iterations 5, steps_to_completion {0: 20, 3: 13}, total_solved 2, error 0.6
+sample 0, episode_result iterations 10, steps_to_completion {0: 13, 1: 10, 2: 5, 3: 15, 4: 7, 5: 6, 8: 7}, total_solved 7, error 0.3
+
+
+
+sample 1, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 1, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 7, 4: 5}, total_solved 5, error 0.0
+sample 1, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 4: 9, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 9, error 0.1
+
+
+
+sample 2, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 2, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 2, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 7}, total_solved 10, error 0.0
+
+
+
+sample 3, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 3, episode_result iterations 5, steps_to_completion {0: 5, 1: 7, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 3, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 4, episode_result
+sample 4, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 4, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 5, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 5, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 5, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 6, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 6, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 6, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 6, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 7, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 7, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 7, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 8, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 8, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 8, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+
+
+sample 9, episode_result iterations 1, steps_to_completion {0: 5}, total_solved 1, error 0.0
+sample 9, episode_result iterations 5, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5}, total_solved 5, error 0.0
+sample 9, episode_result iterations 10, steps_to_completion {0: 5, 1: 5, 2: 5, 3: 5, 4: 5, 5: 6, 6: 5, 7: 5, 8: 5, 9: 5}, total_solved 10, error 0.0
+
+/Users/andreea/opt/anaconda3/envs/conda-test/bin/python /Users/andreea/PycharmProjects/MatrixAgent/Main.py
+Using TensorFlow backend.
+2020-07-13 13:27:31.277608: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-07-13 13:27:31.277929: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+sample 0
+episode 0/50
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 14
+episode 2/50
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 17
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 10
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 9
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 12
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 13
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 6
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 13
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 7
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 6
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 7
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 9
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 6
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 7
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 7
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 7
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 7
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 8
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 9
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 8
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 8
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 7
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 6
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 7
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 6
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 47
+
+
+
+sample 1
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 6
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 6
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 2
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 6
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 6
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 3
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 6
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 6
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 4
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 6
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 7
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 5
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 6
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 6
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 7
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 6
+episodes: 50 total_solved: 50
+
+
+
+sample 6
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 7
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 6
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 7
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 8
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 5
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 7
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 6
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 5
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 7
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+sample 9
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 5
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 5
+episode 2/50
+         - SOLVED! episode 2/50 steps taken: 5
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 5
+episode 4/50
+         - SOLVED! episode 4/50 steps taken: 5
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 5
+episode 6/50
+         - SOLVED! episode 6/50 steps taken: 5
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 5
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 5
+episode 9/50
+         - SOLVED! episode 9/50 steps taken: 5
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 6
+episode 11/50
+         - SOLVED! episode 11/50 steps taken: 5
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 5
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 5
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 5
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 5
+episode 16/50
+         - SOLVED! episode 16/50 steps taken: 5
+episode 17/50
+         - SOLVED! episode 17/50 steps taken: 5
+episode 18/50
+         - SOLVED! episode 18/50 steps taken: 5
+episode 19/50
+         - SOLVED! episode 19/50 steps taken: 5
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 5
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 5
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 5
+episode 23/50
+         - SOLVED! episode 23/50 steps taken: 5
+episode 24/50
+         - SOLVED! episode 24/50 steps taken: 5
+episode 25/50
+         - SOLVED! episode 25/50 steps taken: 5
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 5
+episode 27/50
+         - SOLVED! episode 27/50 steps taken: 5
+episode 28/50
+         - SOLVED! episode 28/50 steps taken: 5
+episode 29/50
+         - SOLVED! episode 29/50 steps taken: 5
+episode 30/50
+         - SOLVED! episode 30/50 steps taken: 5
+episode 31/50
+         - SOLVED! episode 31/50 steps taken: 5
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 5
+episode 33/50
+         - SOLVED! episode 33/50 steps taken: 7
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 5
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 5
+episode 36/50
+         - SOLVED! episode 36/50 steps taken: 5
+episode 37/50
+         - SOLVED! episode 37/50 steps taken: 5
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+         - SOLVED! episode 39/50 steps taken: 5
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 5
+episode 41/50
+         - SOLVED! episode 41/50 steps taken: 5
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 5
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 5
+episode 44/50
+         - SOLVED! episode 44/50 steps taken: 5
+episode 45/50
+         - SOLVED! episode 45/50 steps taken: 5
+episode 46/50
+         - SOLVED! episode 46/50 steps taken: 5
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 5
+episode 48/50
+         - SOLVED! episode 48/50 steps taken: 5
+episode 49/50
+         - SOLVED! episode 49/50 steps taken: 5
+episodes: 50 total_solved: 50
+
+
+
+10
+sample 0, episode_result iterations 50, steps_to_completion [14, 17, 10, 9, 12, 13, 6, 13, 7, 6, 7, 9, 6, 7, 7, 5, 7, 5, 7, 8, 9, 8, 5, 8, 7, 5, 5, 5, 6, 7, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 47, error 0.06
+
+
+
+sample 1, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 2, episode_result iterations 50, steps_to_completion [5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 3, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 4, episode_result iterations 50, steps_to_completion [5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 5, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6], total_solved 50, error 0.0
+
+
+
+sample 6, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 7, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 8, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+sample 9, episode_result iterations 50, steps_to_completion [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], total_solved 50, error 0.0
+
+
+
+
+Process finished with exit code 0
+
+
+/Users/andreea/opt/anaconda3/envs/conda-test/bin/python /Users/andreea/PycharmProjects/MatrixAgent/Main.py
+Using TensorFlow backend.
+2020-07-13 13:30:33.167221: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-07-13 13:30:33.167557: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 8. Tune using inter_op_parallelism_threads for best performance.
+sample 0
+episode 0/50
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 16
+episode 2/50
+episode 3/50
+         - SOLVED! episode 3/50 steps taken: 17
+episode 4/50
+episode 5/50
+         - SOLVED! episode 5/50 steps taken: 7
+episode 6/50
+episode 7/50
+         - SOLVED! episode 7/50 steps taken: 10
+episode 8/50
+         - SOLVED! episode 8/50 steps taken: 6
+episode 9/50
+episode 10/50
+         - SOLVED! episode 10/50 steps taken: 13
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+         - SOLVED! episode 14/50 steps taken: 8
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 6
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 8
+
+
+
+sample 1
+episode 0/50
+episode 1/50
+         - SOLVED! episode 1/50 steps taken: 14
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 1
+
+
+
+sample 2
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+         - SOLVED! episode 47/50 steps taken: 9
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 1
+
+
+
+sample 3
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 16
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+         - SOLVED! episode 26/50 steps taken: 11
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 14
+episode 33/50
+episode 34/50
+episode 35/50
+         - SOLVED! episode 35/50 steps taken: 20
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+         - SOLVED! episode 42/50 steps taken: 10
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 5
+
+
+
+sample 4
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+         - SOLVED! episode 12/50 steps taken: 7
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+         - SOLVED! episode 20/50 steps taken: 17
+episode 21/50
+episode 22/50
+         - SOLVED! episode 22/50 steps taken: 7
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+         - SOLVED! episode 43/50 steps taken: 17
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 4
+
+
+
+sample 5
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+         - SOLVED! episode 21/50 steps taken: 9
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+         - SOLVED! episode 34/50 steps taken: 7
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 2
+
+
+
+sample 6
+episode 0/50
+         - SOLVED! episode 0/50 steps taken: 15
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 1
+
+
+
+sample 7
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 0
+
+
+
+sample 8
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+         - SOLVED! episode 13/50 steps taken: 20
+episode 14/50
+episode 15/50
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+         - SOLVED! episode 32/50 steps taken: 19
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+episode 39/50
+episode 40/50
+         - SOLVED! episode 40/50 steps taken: 17
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 3
+
+
+
+sample 9
+episode 0/50
+episode 1/50
+episode 2/50
+episode 3/50
+episode 4/50
+episode 5/50
+episode 6/50
+episode 7/50
+episode 8/50
+episode 9/50
+episode 10/50
+episode 11/50
+episode 12/50
+episode 13/50
+episode 14/50
+episode 15/50
+         - SOLVED! episode 15/50 steps taken: 17
+episode 16/50
+episode 17/50
+episode 18/50
+episode 19/50
+episode 20/50
+episode 21/50
+episode 22/50
+episode 23/50
+episode 24/50
+episode 25/50
+episode 26/50
+episode 27/50
+episode 28/50
+episode 29/50
+episode 30/50
+episode 31/50
+episode 32/50
+episode 33/50
+episode 34/50
+episode 35/50
+episode 36/50
+episode 37/50
+episode 38/50
+         - SOLVED! episode 38/50 steps taken: 5
+episode 39/50
+episode 40/50
+episode 41/50
+episode 42/50
+episode 43/50
+episode 44/50
+episode 45/50
+episode 46/50
+episode 47/50
+episode 48/50
+episode 49/50
+episodes: 50 total_solved: 2
+
+
+
+10
+sample 0, episode_result iterations 50, steps_to_completion [16, 17, 7, 10, 6, 13, 8, 6], total_solved 8, error 0.84
+
+
+
+sample 1, episode_result iterations 50, steps_to_completion [14], total_solved 1, error 0.98
+
+
+
+sample 2, episode_result iterations 50, steps_to_completion [9], total_solved 1, error 0.98
+
+
+
+sample 3, episode_result iterations 50, steps_to_completion [16, 11, 14, 20, 10], total_solved 5, error 0.9
+
+
+
+sample 4, episode_result iterations 50, steps_to_completion [7, 17, 7, 17], total_solved 4, error 0.92
+
+
+
+sample 5, episode_result iterations 50, steps_to_completion [9, 7], total_solved 2, error 0.96
+
+
+
+sample 6, episode_result iterations 50, steps_to_completion [15], total_solved 1, error 0.98
+
+
+
+sample 7, episode_result
+
+
+
+sample 8, episode_result iterations 50, steps_to_completion [20, 19, 17], total_solved 3, error 0.94
+
+
+
+sample 9, episode_result iterations 50, steps_to_completion [17, 5], total_solved 2, error 0.96
+
+
+
+
+Process finished with exit code 0
