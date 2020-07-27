@@ -28,28 +28,13 @@ class DQNAgent:
             self.load_weights(requested_model)
         self.update_target_model()
 
-    """Huber loss for Q Learning
-    References: https://en.wikipedia.org/wiki/Huber_loss
-                https://www.tensorflow.org/api_docs/python/tf/losses/huber_loss
-    """
-
-    def _huber_loss(self, y_true, y_pred, clip_delta=1.0):
-        error = y_true - y_pred
-        cond = K.abs(error) <= clip_delta
-
-        squared_loss = 0.5 * K.square(error)
-        quadratic_loss = 0.5 * K.square(clip_delta) + clip_delta * (K.abs(error) - clip_delta)
-
-        return K.mean(tf.where(cond, squared_loss, quadratic_loss))
-
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(4, input_dim=self.state_size, activation='relu'))
-        #model.add(Dense(5, activation='relu'))
-        #model.add(Dense(self.action_size, activation='linear'))
-        model.compile(loss=self._huber_loss,
-                      optimizer=Adam(lr=self.learning_rate))
+        model.add(Dense(4, input_dim=self.state_size, activation='softmax'))
+        model.add(Dense(16, activation='softmax'))
+        model.add(Dense(4, activation='softmax'))
+        model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
 
     def update_target_model(self):
@@ -117,11 +102,11 @@ class DQNAgent:
         self.model.save_weights(name)
 
     def _predict(self, state):
-        reshaped_state = np.reshape(state, self.state_size)
-        target = self.model.predict(reshaped_state, steps=10)
-        size = self.state_size / 2
-        reshaped_target = np.reshape(target, (size, size))
-        return reshaped_target
+        reshaped_state = np.reshape(state, (1, self.state_size))
+        target = self.model.predict(reshaped_state)
+        size = int(np.sqrt(self.state_size))
+        #reshaped_target = np.reshape(target, (size, size))
+        return target
 
     def save_model(self, model_name):
         self.model.save(model_name)

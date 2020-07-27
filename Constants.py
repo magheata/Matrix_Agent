@@ -1,3 +1,8 @@
 PENALTY_OUT_OF_RANGE = 10
 
 MODEL_FILE = 'model/agent_model_v1'
+
+WIDTH = 600
+HEIGHT = 500
+
+DEFAULT_DIMENSION = 5

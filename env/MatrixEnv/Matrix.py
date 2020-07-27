@@ -23,24 +23,26 @@ MAP = [
 class Matrix(gym.Env):
     metadata = {'render.modes': ['human']}
 
-    def __init__(self, **kwargs):
+    def __init__(self):
         self.desc = np.asarray(MAP, dtype='c')
-        self.dimension = kwargs.get('dimension')
-        self.n_states = self.dimension ** 2
         self.action_space = spaces.Discrete(len(list(map(int, Action))))
-        self.observation_space = spaces.Discrete(self.n_states)  # with absorbing state
+
+    def init_variables(self, dimension, start_state, terminal_state):
+        self.dimension = dimension
+        self.n_states = self.dimension ** 2
         self.num_rows = self.dimension
         self.num_columns = self.dimension
-        self.shape = np.zeros(shape=(self.num_rows, self.num_columns))
         self.max_row = self.num_rows - 1
         self.max_col = self.num_columns - 1
-        self.terminal_state = kwargs.get('goal')
-        self.start_state = kwargs.get('start_state')
+        self.shape = np.zeros(shape=(self.num_rows, self.num_columns))
+        self.terminal_state = terminal_state
+        self.start_state = start_state
         self.s = np.zeros((self.dimension, self.dimension))
         self.s[self.start_state[0], self.start_state[1]] = 1
         self.s[self.terminal_state[0], self.terminal_state[1]] = 2
         self.initial_state = self.s.copy()
         self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
+        self.observation_space = spaces.Discrete(self.n_states)  # with absorbing state
 
     def render(self, mode='human'):
         outfile = StringIO() if mode == 'ansi' else sys.stdout
@@ -75,6 +77,7 @@ class Matrix(gym.Env):
     def reset_action(self):
         self.s = self.initial_state.copy()
         return self.s
+
     # endregion
 
     # region STEP
@@ -131,6 +134,7 @@ class Matrix(gym.Env):
         # mirar max acciones
 
         return reward
+
     # endregion
 
     def reset(self):
