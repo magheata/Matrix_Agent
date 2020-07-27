@@ -1,24 +1,20 @@
-from Action import Action
-from DQNAgent import DQNAgent
-
-import tkinter as tk
-
-import os
 import matplotlib.pyplot as plt
 import gym
-import seaborn as sns
-
 import GraphService as graphService
+import tkinter as tk
+import numpy as np
 
-import tensorflow as tf
-from tensorflow import keras
+from Action import Action
+from Application.Controller import Controller
+from DQNAgent import DQNAgent
 from os import listdir
 from os.path import isfile, join
 from Domain.EpisodeResult import EpisodeResult
 
 EPISODES = 50
 
-TOTAL_SAMPLES = 10
+TOTAL_SAMPLES = 200
+
 
 def plot(solved_episodes):
     plt(EPISODES * TOTAL_SAMPLES, solved_episodes)
@@ -39,6 +35,7 @@ def print_samples_results(sample_results):
 
 def compute_episodes(total_episodes):
     solved_eps = 0
+    total_reward = 0
     steps_taken_for_completion = []
     for episode in range(total_episodes):
         actions = []
@@ -49,6 +46,7 @@ def compute_episodes(total_episodes):
             env_states.append(env.s.copy())
             action = agent.act(state)
             next_state, reward, done = env.step_action(action, len(actions))
+            total_reward = total_reward + reward
             agent.memorize(state, action, reward, next_state, done)
             state = next_state
             actions.append(action)
@@ -63,65 +61,90 @@ def compute_episodes(total_episodes):
                 break
             if len(agent.memory) > batch_size:
                 agent.replay(batch_size)
-    return solved_eps, steps_taken_for_completion
+    return solved_eps, steps_taken_for_completion, total_reward
+
+
+def tryEx(event):
+    print('Hello')
+
+
+def predictActions(env, agent):
+    map = env.s
+    agent_pos = env.start_state
+    goal_pos = env.terminal_state
+    for i in range(env.dimension):
+        for j in range(env.dimension):
+            map[agent_pos[0]][agent_pos[1]] = 0
+            agent_pos = (i, j)
+
+            if agent_pos != goal_pos:
+                map[goal_pos[0]][goal_pos[1]] = 2
+
+            map[agent_pos[0]][agent_pos[1]] = 1
+            print(map)
+            prediction = agent._predict(map)
+            print(prediction)
+            print(Action(np.argmax(prediction[0])))
+            print("\n\n")
 
 
 if __name__ == "__main__":
 
-    window = tk.Tk()
-    label = tk.Label(text="Python rocks!")
-    label.pack()
-    window.mainloop()
-    env = gym.make("env:MatrixEnv-v0")
-    state_size = env.observation_space.n
-    action_size = env.action_space.n
+    controller = Controller()
+    env = controller.createEnvironment()
+    agent = controller.createAgent(env)
+    #predictActions(env, agent)
 
-    total_models = len(os.listdir(os.getcwd() + '/model'))
-    if total_models != 0:
-        use_saved_model = input('Another model already exists, use existing model? y/n: ')
-        if (use_saved_model == 'y') or (use_saved_model == 'Y'):
-            onlyfiles = [f for f in listdir(os.getcwd() + '/model') if isfile(join(os.getcwd() + '/model', f))]
-            print(onlyfiles)
-            requested_model = input('Enter the model you want to use from the saved models: ')
-            created_agent = False
-            while not created_agent:
-                if requested_model in onlyfiles:
-                    agent = DQNAgent(state_size, action_size, True, 'model/' + requested_model)
-                    created_agent = True
-                else:
-                    print("Model does not exists. \n")
-                    requested_model = input('Enter the model you want to use from the saved models: ')
-        else:
-            agent = DQNAgent(state_size, action_size, False, '')
-    else:
-        agent = DQNAgent(state_size, action_size, False, '')
-
-    #print(agent.model.get_weights())
     batch_size = 32
     episode_results = []
     samples_results = {}
-
+    reward_results = []
     steps_taken = []
     for sample in range(TOTAL_SAMPLES):
         SOLVED_TOTAL = []
         print("sample", sample)
-        total_solved, steps_taken_for_completion = compute_episodes(EPISODES)
+        total_solved, steps_taken_for_completion, total_reward = compute_episodes(EPISODES)
 
         steps_taken.append(steps_taken_for_completion)
 
         episode_results.append(EpisodeResult(EPISODES, steps_taken_for_completion, total_solved))
+
+        reward_results.append(total_reward)
 
         print("episodes: {} total_solved: {}".format(EPISODES, total_solved))
         print("\n\n")
         samples_results[sample] = episode_results
         episode_results = []
 
+    mean_steps = []
+    variance_steps = []
+    std_var_steps = []
+    for steps in steps_taken:
+        steps_array = np.array(steps)
+        if len(steps_array) is not 0:
+            print('Steps taken: {}'.format(steps))
+            mean_steps.append(steps_array.mean())
+            variance_steps.append(steps_array.var())
+            std_var_steps.append(steps_array.std())
+        else:
+            mean_steps.append(0)
+            variance_steps.append(0)
+            std_var_steps.append(0)
+
+    iterations_array = np.arange(start=1, stop=len(steps_taken) + 1)
+    graphService.plot_mean_steps(iterations_array, mean_steps)
+    graphService.plot_variance_steps(iterations_array, variance_steps)
+    graphService.plot_std_dev_steps(iterations_array, std_var_steps)
+    graphService.plot_reward(iterations_array, reward_results)
+
     graphService.create_boxplot_actions(steps_taken)
+
+    # rew_file_name = str(disk_dir) + '/%s_mean_rewards.pkl' % experiment_name
+    # with open(rew_file_name, 'wb') as fp:
+    #    pickle.dump(final_ep_mean_rewards, fp)
 
     save_model = input("Save user model? y/n : ")
 
     if (save_model == 'y') or (save_model == 'Y'):
         model_file_name = input('Enter file name: ')
         agent.save_model('model/' + model_file_name)
-
-
