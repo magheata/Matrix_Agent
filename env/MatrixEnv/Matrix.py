@@ -7,7 +7,7 @@ from gym.vector.utils import spaces
 from scipy.spatial import distance
 from six import StringIO
 
-from Action import Action
+from Domain.Action import Action
 
 MAP = [
     "+---------+",
@@ -133,7 +133,7 @@ class Matrix(gym.Env):
 
         # mirar max acciones
 
-        return reward
+        return self.distance_from_start_to_goal - reward
 
     # endregion
 

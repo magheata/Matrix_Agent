@@ -1,11 +1,13 @@
+import json
 from os import listdir
 from os.path import isfile, join
 
 import gym
 import os
+import pandas as pd
 
 from DQNAgent import DQNAgent
-from Presentation.Window import Window
+from Infrastructure.DBService import DBService
 
 
 def create_environment():
@@ -13,6 +15,9 @@ def create_environment():
 
 
 class Controller:
+
+    def createDatabaseConnection(self):
+        self.dbService = DBService()
 
     def setSamples(self, samples):
         self.samples = samples
@@ -39,17 +44,17 @@ class Controller:
     def createAgent(self, env):
         state_size = env.observation_space.n
         action_size = env.action_space.n
-        total_models = len(os.listdir(os.getcwd() + '/model'))
+        total_models = len(os.listdir(os.getcwd() + '/model_old'))
         if total_models != 0:
             use_saved_model = input('Another model already exists, use existing model? y/n: ')
             if (use_saved_model == 'y') or (use_saved_model == 'Y'):
-                onlyfiles = [f for f in listdir(os.getcwd() + '/model') if isfile(join(os.getcwd() + '/model', f))]
+                onlyfiles = [f for f in listdir(os.getcwd() + '/model_old') if isfile(join(os.getcwd() + '/model_old', f))]
                 print(onlyfiles)
                 requested_model = input('Enter the model you want to use from the saved models: ')
                 created_agent = False
                 while not created_agent:
                     if requested_model in onlyfiles:
-                        _agent = DQNAgent(state_size, action_size, True, 'model/' + requested_model)
+                        _agent = DQNAgent(state_size, action_size, True, requested_model)
                         created_agent = True
                     else:
                         print("Model does not exists. \n")
@@ -59,3 +64,19 @@ class Controller:
         else:
             _agent = DQNAgent(state_size, action_size, False, '')
         return _agent
+
+    def saveExperiment(self, parentDirectory, experimentType, modelUsed, episodes, iterations, episode_results, file_name):
+        dictlist = []
+        for key, value in episode_results.items():
+            temp = [key, value]
+            dictlist.append(temp)
+
+        d = {
+            'experimentType': experimentType,
+            'modelUsed': modelUsed,
+            'episodes': episodes,
+            'iterations': iterations,
+            'episode_results': dictlist
+        }
+        df = pd.DataFrame(data=d)
+        df.to_pickle("./model/{}/{}".format(parentDirectory, file_name))

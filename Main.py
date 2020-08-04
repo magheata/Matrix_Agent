@@ -1,23 +1,24 @@
+import json
+
 import matplotlib.pyplot as plt
-import gym
 import GraphService as graphService
-import tkinter as tk
 import numpy as np
+import os
 
-from Action import Action
+from Domain.Action import Action
 from Application.Controller import Controller
-from DQNAgent import DQNAgent
-from os import listdir
-from os.path import isfile, join
 from Domain.EpisodeResult import EpisodeResult
+from Domain.ExperimentType import ExperimentType
 
-EPISODES = 50
+from datetime import datetime
 
-TOTAL_SAMPLES = 200
+ITERATIONS = 1
+
+EPISODES = 1
 
 
 def plot(solved_episodes):
-    plt(EPISODES * TOTAL_SAMPLES, solved_episodes)
+    plt(ITERATIONS * EPISODES, solved_episodes)
     plt.title('Total solved episodes', fontsize=14)
     plt.ylabel('Solved episodes', fontsize=14)
     plt.xlabel('Total episodes', fontsize=14)
@@ -64,10 +65,6 @@ def compute_episodes(total_episodes):
     return solved_eps, steps_taken_for_completion, total_reward
 
 
-def tryEx(event):
-    print('Hello')
-
-
 def predictActions(env, agent):
     map = env.s
     agent_pos = env.start_state
@@ -88,30 +85,44 @@ def predictActions(env, agent):
             print("\n\n")
 
 
+def save_model_results(model_name, experiment_type):
+    now = datetime.now()
+    file_name = "{}-{}-{}".format(model_name, experiment_type.name, now.strftime("%d_%m-%H_%M"))
+    print(file_name)
+    controller.saveExperiment(model_name,
+                              ExperimentType(0),
+                              model_name,
+                              EPISODES,
+                              ITERATIONS,
+                              samples_results,
+                              file_name + ".pkl")
+
+
 if __name__ == "__main__":
 
     controller = Controller()
+    # controller.createDatabaseConnection()
     env = controller.createEnvironment()
     agent = controller.createAgent(env)
-    #predictActions(env, agent)
+    # predictActions(env, agent)
 
     batch_size = 32
     episode_results = []
     samples_results = {}
     reward_results = []
     steps_taken = []
-    for sample in range(TOTAL_SAMPLES):
+    for sample in range(EPISODES):
         SOLVED_TOTAL = []
         print("sample", sample)
-        total_solved, steps_taken_for_completion, total_reward = compute_episodes(EPISODES)
+        total_solved, steps_taken_for_completion, total_reward = compute_episodes(ITERATIONS)
 
         steps_taken.append(steps_taken_for_completion)
 
-        episode_results.append(EpisodeResult(EPISODES, steps_taken_for_completion, total_solved))
+        episode_results.append(EpisodeResult(ITERATIONS, steps_taken_for_completion, total_solved, total_reward))
 
         reward_results.append(total_reward)
 
-        print("episodes: {} total_solved: {}".format(EPISODES, total_solved))
+        print("episodes: {} total_solved: {}".format(ITERATIONS, total_solved))
         print("\n\n")
         samples_results[sample] = episode_results
         episode_results = []
@@ -139,13 +150,13 @@ if __name__ == "__main__":
 
     graphService.create_boxplot_actions(steps_taken)
 
-    # rew_file_name = str(disk_dir) + '/%s_mean_rewards.pkl' % experiment_name
-    # with open(rew_file_name, 'wb') as fp:
-    #    pickle.dump(final_ep_mean_rewards, fp)
-
     save_model = input("Save user model? y/n : ")
 
     if (save_model == 'y') or (save_model == 'Y'):
         model_file_name = input('Enter file name: ')
-        agent.save_model('model/' + model_file_name)
+        agent.save_model(model_file_name)
 
+    save_xperiment = input("Save experiment? y/n : ")
+
+    if (save_xperiment == 'y') or (save_xperiment == 'Y'):
+        save_model_results(agent.requested_model, ExperimentType.EPISODES)

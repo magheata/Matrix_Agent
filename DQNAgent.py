@@ -1,3 +1,4 @@
+import os
 import random
 import numpy as np
 from collections import deque
@@ -24,16 +25,21 @@ class DQNAgent:
         self.learning_rate = 0.001
         self.model = self._build_model()
         self.target_model = self._build_model()
+        self.requested_model = requested_model
         if use_existing_model:
-            self.load_weights(requested_model)
+            self.load_weights("model/" + requested_model)
         self.update_target_model()
+
+    def set_requested_model(self, requested_model):
+        self.requested_model = requested_model
 
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(4, input_dim=self.state_size, activation='softmax'))
-        model.add(Dense(16, activation='softmax'))
-        model.add(Dense(4, activation='softmax'))
+        model.add(Dense(4, input_dim=self.state_size, activation='relu'))
+        model.add(Dense(16, activation='relu'))
+        model.add(Dense(4,))
+
         model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
 
@@ -109,7 +115,15 @@ class DQNAgent:
         return target
 
     def save_model(self, model_name):
-        self.model.save(model_name)
+        parent_directory = os.getcwd()
+        model_directory = "model"
+        path = os.path.join(parent_directory, model_directory)
+
+        if not os.path.isdir(os.path.join(parent_directory, model_name)):
+            os.mkdir(os.path.join(path, model_name))
+
+        self.requested_model = model_name
+        self.model.save("model/{}/{}".format(model_name, model_name), model_name)
 
     def load_weights(self, requested_model):
         existing_model = tf.keras.models.load_model(requested_model, compile=False)
