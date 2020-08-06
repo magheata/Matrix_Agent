@@ -30,7 +30,7 @@ class Controller:
 
     def createEnvironment(self):
         env = gym.make("env:MatrixEnv-v0")
-        env.init_variables(5, (0, 0), (1, 4))
+        env.init_variables(10, (0, 0), (1, 4))
         return env
 
     def createAgent(self, env):
@@ -119,15 +119,15 @@ class Controller:
     def run_experiment(self):
         samples_results = {}
         if self.experiment_type == ExperimentType.EPISODES:
-            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_eps(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_DIMENSION:
-            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_change_dim(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_GOAL:
-            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_change_goal(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_ORIGIN:
-            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_change_origin(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.DISABLE_TILE:
-            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_disable_tile(self.episodes, self.iterations)
         self.save_experiment_result(samples_results, self.use_existing_model)
 
     def save_model_results(self, samples_results):

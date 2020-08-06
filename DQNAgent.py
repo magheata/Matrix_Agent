@@ -30,12 +30,16 @@ class DQNAgent:
     def set_requested_model(self, requested_model):
         self.requested_model = requested_model
 
+    def setStateSize(self, state_size):
+        self.state_size = state_size
+        self.dim = int(np.sqrt(self.state_size))
+
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(4, input_dim=self.state_size, activation='relu'))
-        model.add(Dense(16, activation='relu'))
-        model.add(Dense(4,))
+        model.add(Dense(5, input_dim=self.state_size, activation='relu'))
+        model.add(Dense(25, activation='relu'))
+        model.add(Dense(5,))
 
         model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
@@ -53,40 +57,17 @@ class DQNAgent:
         if state is not None:
             s = state.reshape((1, self.dim * self.dim))
             act_values = self.model.predict(s)
-            #return np.argmax(act_values[0])  # returns action
             return np.argmax(act_values[0])
         return random.randrange(self.action_size)
 
     def replay(self, batch_size):
         minibatch = random.sample(self.memory, batch_size)
-        #minibatch = self.memory
         states, targets_f = [], []
         for state, action, reward, next_state, done in minibatch:
             if state is not None:
                 s = state.reshape((1, self.dim * self.dim))
-                sp = next_state.reshape((1, self.dim * self.dim))
-                reward_real = reward
-                if not done:
-                    reward_real = (reward_real + self.gamma * np.amax(self.model.predict(sp)))  # reward_learned
-                #print("REPLAY")
-                #print(self.model.predict(s))
-                #reward_model = self.model.predict(s).reshape((self.dim, self.dim, 2))
-                #self.model.summary()
-
-                #reward_model = self.model.predict(s).reshape((self.dim, self.dim))
                 reward_model = self.model.predict(s)
-
-                pos_action = 1
-
-                # pos_action = get_services_position(state)
-                #for row in range(len(reward_real)):
-                #    for col in range(len(reward_real[row])):
-                #        if row in pos_action:
-                #            reward_model[row][col] = reward_real[row][col]
-                #        else:
-                #            reward_model[row][col] = [0., 0.]
                 states.append(s)
-                #targets_f.append(reward_model.reshape(1, self.dim * self.dim * 2))
                 targets_f.append(reward_model)
 
         states = np.array(states).reshape(-1, self.dim * self.dim)
@@ -107,8 +88,6 @@ class DQNAgent:
     def _predict(self, state):
         reshaped_state = np.reshape(state, (1, self.state_size))
         target = self.model.predict(reshaped_state)
-        size = int(np.sqrt(self.state_size))
-        #reshaped_target = np.reshape(target, (size, size))
         return target
 
     def save_model(self, model_name):
