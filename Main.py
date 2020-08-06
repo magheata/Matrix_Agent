@@ -66,12 +66,21 @@ if __name__ == "__main__":
         else:
             print("Positive number of iterations required\n\n")
 
+    dimension_correct = False
+    dimension = -1
+    while not dimension_correct:
+        dimension = input("Dimension of the matrix: ")
+        if dimension.isdigit():
+            dimension_correct = True
+        else:
+            print("Positive dimension required\n\n")
+
     for experiment in (ExperimentType):
         print("{} - {}".format(experiment.value, experiment.name))
 
     experiment_type = input("Choose the type of experiment (enter index): ")
 
-    controller = Controller(int(episodes), int(iterations), int(experiment_type))
+    controller = Controller(int(dimension), int(episodes), int(iterations), int(experiment_type))
     controller.run_experiment()
     #predictActions(env, agent)
     #

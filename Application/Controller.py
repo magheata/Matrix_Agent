@@ -7,6 +7,8 @@ import os
 import pandas as pd
 import numpy as np
 
+from random import randint
+
 from DQNAgent import DQNAgent
 from Domain.ExperimentType import ExperimentType
 from Infrastructure.ExperimentService import ExperimentService
@@ -20,17 +22,20 @@ def create_environment():
 
 class Controller:
 
-    def __init__(self, episodes, iterations, experiment_type):
-        self.env = self.createEnvironment()
+    def __init__(self, dimension, episodes, iterations, experiment_type):
+        self.env = self.createEnvironment(dimension)
         self.agent, self.use_existing_model = self.createAgent(self.env)
         self.episodes = episodes
         self.iterations = iterations
         self.experiment_type = ExperimentType(experiment_type)
         self.experimentService = ExperimentService(self.env, self.agent)
 
-    def createEnvironment(self):
+    def createEnvironment(self, dimension):
         env = gym.make("env:MatrixEnv-v0")
-        env.init_variables(10, (0, 0), (1, 4))
+        origin = (randint(0, dimension - 1), randint(0, dimension - 1))
+        goal = (randint(0, dimension - 1), randint(0, dimension - 1))
+        env.init_variables(dimension, origin, goal)
+        print("Distance from start to goal is: {}".format(env.distance_from_start_to_goal))
         return env
 
     def createAgent(self, env):
