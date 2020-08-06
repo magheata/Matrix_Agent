@@ -117,7 +117,17 @@ class Controller:
         graphService.create_boxplot_actions(steps_taken)
 
     def run_experiment(self):
-        samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        samples_results = {}
+        if self.experiment_type == ExperimentType.EPISODES:
+            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_DIMENSION:
+            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_GOAL:
+            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_ORIGIN:
+            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.DISABLE_TILE:
+            samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
         self.save_experiment_result(samples_results, self.use_existing_model)
 
     def save_model_results(self, samples_results):

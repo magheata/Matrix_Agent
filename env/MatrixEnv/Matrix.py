@@ -116,6 +116,8 @@ class Matrix(gym.Env):
             if col - 1 < 0:
                 use_penalty = True
             position = (row, new_col)
+        elif parsed_action == Action.STAY:
+            position = (row, col)
         return position, use_penalty
 
     def get_pos_components(self):
