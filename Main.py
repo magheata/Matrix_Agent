@@ -1,16 +1,9 @@
-import json
-
 import matplotlib.pyplot as plt
-import GraphService as graphService
 import numpy as np
-import os
 
 from Domain.Action import Action
 from Application.Controller import Controller
-from Domain.EpisodeResult import EpisodeResult
 from Domain.ExperimentType import ExperimentType
-
-from datetime import datetime
 
 ITERATIONS = 1
 
@@ -33,38 +26,6 @@ def print_samples_results(sample_results):
             print("sample {}, episode_result {}".format(sample, episode_result))
         print("\n\n")
 
-
-def compute_episodes(total_episodes):
-    solved_eps = 0
-    total_reward = 0
-    steps_taken_for_completion = []
-    for episode in range(total_episodes):
-        actions = []
-        env_states = []
-        state = env.reset_action()
-        print('episode {}/{}'.format(episode, total_episodes))
-        for time in range(20):
-            env_states.append(env.s.copy())
-            action = agent.act(state)
-            next_state, reward, done = env.step_action(action, len(actions))
-            total_reward = total_reward + reward
-            agent.memorize(state, action, reward, next_state, done)
-            state = next_state
-            actions.append(action)
-            if done:
-                print('         - SOLVED! episode {}/{} steps taken: {}'.format(episode, total_episodes, len(actions)))
-                steps_taken_for_completion.append(len(actions))
-                solved_eps = solved_eps + 1
-                actions_enum = []
-                for i in actions:
-                    actions_enum.append(Action(i))
-                agent.update_target_model()
-                break
-            if len(agent.memory) > batch_size:
-                agent.replay(batch_size)
-    return solved_eps, steps_taken_for_completion, total_reward
-
-
 def predictActions(env, agent):
     map = env.s
     agent_pos = env.start_state
@@ -85,78 +46,32 @@ def predictActions(env, agent):
             print("\n\n")
 
 
-def save_model_results(model_name, experiment_type):
-    now = datetime.now()
-    file_name = "{}-{}-{}".format(model_name, experiment_type.name, now.strftime("%d_%m-%H_%M"))
-    print(file_name)
-    controller.saveExperiment(model_name,
-                              ExperimentType(0),
-                              model_name,
-                              EPISODES,
-                              ITERATIONS,
-                              samples_results,
-                              file_name + ".pkl")
-
-
 if __name__ == "__main__":
 
-    controller = Controller()
-    # controller.createDatabaseConnection()
-    env = controller.createEnvironment()
-    agent = controller.createAgent(env)
+    episodes_correct = False
+    episodes = -1
+    while not episodes_correct:
+        episodes = input("Total episodes for this experiment: ")
+        if episodes.isdigit():
+            episodes_correct = True
+        else:
+            print("Positive number of episodes required\n\n")
+
+    iterations_correct = False
+    iterations = -1
+    while not iterations_correct:
+        iterations = input("Total iterations/episode for this experiment: ")
+        if iterations.isdigit():
+            iterations_correct = True
+        else:
+            print("Positive number of iterations required\n\n")
+
+    for experiment in (ExperimentType):
+        print("{} - {}".format(experiment.value, experiment.name))
+
+    experiment_type = input("Choose the type of experiment (enter index): ")
+
+    controller = Controller(int(episodes), int(iterations), int(experiment_type))
+    controller.run_experiment()
     # predictActions(env, agent)
 
-    batch_size = 32
-    episode_results = []
-    samples_results = {}
-    reward_results = []
-    steps_taken = []
-    for sample in range(EPISODES):
-        SOLVED_TOTAL = []
-        print("sample", sample)
-        total_solved, steps_taken_for_completion, total_reward = compute_episodes(ITERATIONS)
-
-        steps_taken.append(steps_taken_for_completion)
-
-        episode_results.append(EpisodeResult(ITERATIONS, steps_taken_for_completion, total_solved, total_reward))
-
-        reward_results.append(total_reward)
-
-        print("episodes: {} total_solved: {}".format(ITERATIONS, total_solved))
-        print("\n\n")
-        samples_results[sample] = episode_results
-        episode_results = []
-
-    mean_steps = []
-    variance_steps = []
-    std_var_steps = []
-    for steps in steps_taken:
-        steps_array = np.array(steps)
-        if len(steps_array) is not 0:
-            print('Steps taken: {}'.format(steps))
-            mean_steps.append(steps_array.mean())
-            variance_steps.append(steps_array.var())
-            std_var_steps.append(steps_array.std())
-        else:
-            mean_steps.append(0)
-            variance_steps.append(0)
-            std_var_steps.append(0)
-
-    iterations_array = np.arange(start=1, stop=len(steps_taken) + 1)
-    graphService.plot_mean_steps(iterations_array, mean_steps)
-    graphService.plot_variance_steps(iterations_array, variance_steps)
-    graphService.plot_std_dev_steps(iterations_array, std_var_steps)
-    graphService.plot_reward(iterations_array, reward_results)
-
-    graphService.create_boxplot_actions(steps_taken)
-
-    save_model = input("Save user model? y/n : ")
-
-    if (save_model == 'y') or (save_model == 'Y'):
-        model_file_name = input('Enter file name: ')
-        agent.save_model(model_file_name)
-
-    save_xperiment = input("Save experiment? y/n : ")
-
-    if (save_xperiment == 'y') or (save_xperiment == 'Y'):
-        save_model_results(agent.requested_model, ExperimentType.EPISODES)

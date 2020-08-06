@@ -1,5 +1,3 @@
-import json
-
 class EpisodeResult:
     def __init__(self, iterations, steps_to_completion, total_solved, reward):
         self.iterations = iterations

@@ -5,11 +5,8 @@ from collections import deque
 from keras.models import Sequential
 from keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
-from keras import backend as K
 
 import tensorflow as tf
-
-import Constants
 
 
 class DQNAgent:
@@ -27,7 +24,7 @@ class DQNAgent:
         self.target_model = self._build_model()
         self.requested_model = requested_model
         if use_existing_model:
-            self.load_weights("model/" + requested_model)
+            self.load_weights("model_old/" + requested_model)
         self.update_target_model()
 
     def set_requested_model(self, requested_model):
@@ -123,7 +120,7 @@ class DQNAgent:
             os.mkdir(os.path.join(path, model_name))
 
         self.requested_model = model_name
-        self.model.save("model/{}/{}".format(model_name, model_name), model_name)
+        self.model.save("model/{}/{}".format(model_name, model_name), model_name, True)
 
     def load_weights(self, requested_model):
         existing_model = tf.keras.models.load_model(requested_model, compile=False)
