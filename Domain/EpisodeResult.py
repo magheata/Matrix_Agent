@@ -1,8 +1,9 @@
 class EpisodeResult:
-    def __init__(self, iterations, steps_to_completion, total_solved):
+    def __init__(self, iterations, steps_to_completion, total_solved, reward):
         self.iterations = iterations
         self.steps_to_completion = steps_to_completion
         self.total_solved = total_solved
+        self.reward = reward
         self.error = (iterations - total_solved) / iterations
 
     def __str__(self):
