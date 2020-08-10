@@ -35,6 +35,7 @@ class Controller:
         origin = (randint(0, dimension - 1), randint(0, dimension - 1))
         goal = (randint(0, dimension - 1), randint(0, dimension - 1))
         env.init_variables(dimension, origin, goal)
+        print(env.s)
         print("Distance from start to goal is: {}".format(env.distance_from_start_to_goal))
         return env
 
@@ -47,8 +48,7 @@ class Controller:
             use_saved_model = input('Another model already exists, use existing model? y/n: ')
             if (use_saved_model == 'y') or (use_saved_model == 'Y'):
                 use_existing_model = True
-                onlyfiles = [f for f in listdir(os.getcwd() + '/model_old') if
-                             isfile(join(os.getcwd() + '/model_old', f))]
+                onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
                 print(onlyfiles)
                 requested_model = input('Enter the model you want to use from the saved models: ')
                 created_agent = False

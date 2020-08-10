@@ -64,15 +64,15 @@ class Matrix(gym.Env):
         self.init_variables(newDimension, self.start_state, self.terminal_state)
 
     def changeTerminalState(self, newTerminalState):
-        self.s[self.terminal_state[0], self.terminal_state[1]] = 0
+        self.initial_state[self.terminal_state[0], self.terminal_state[1]] = 0
         self.terminal_state = newTerminalState
-        self.s[self.terminal_state[0], self.terminal_state[1]] = 2
+        self.initial_state[self.terminal_state[0], self.terminal_state[1]] = 2
         self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
 
     def changeStartState(self, newStartState):
-        self.s[self.start_state[0], self.start_state[1]] = 0
+        self.initial_state[self.start_state[0], self.start_state[1]] = 0
         self.start_state = newStartState
-        self.s[self.start_state[0], self.start_state[1]] = 1
+        self.initial_state[self.start_state[0], self.start_state[1]] = 1
         self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
 
     # region STATE

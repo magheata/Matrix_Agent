@@ -24,7 +24,7 @@ class DQNAgent:
         self.target_model = self._build_model()
         self.requested_model = requested_model
         if use_existing_model:
-            self.load_weights("model_old/" + requested_model)
+            self.load_weights("model/{}/{}".format(requested_model, requested_model))
         self.update_target_model()
 
     def set_requested_model(self, requested_model):
@@ -37,9 +37,9 @@ class DQNAgent:
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(5, input_dim=self.state_size, activation='relu'))
-        model.add(Dense(25, activation='relu'))
-        model.add(Dense(5,))
+        model.add(Dense(5, input_dim=self.state_size, activation='softmax'))
+        # model.add(Dense(2, activation='relu'))
+        # model.add(Dense(5,))
 
         model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
@@ -95,7 +95,7 @@ class DQNAgent:
         model_directory = "model"
         path = os.path.join(parent_directory, model_directory)
 
-        if not os.path.isdir(os.path.join(parent_directory, model_name)):
+        if not os.path.isdir(os.path.join(path, model_name)):
             os.mkdir(os.path.join(path, model_name))
 
         self.requested_model = model_name

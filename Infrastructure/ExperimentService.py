@@ -95,6 +95,7 @@ class ExperimentService:
             if np.random.rand() <= 0.5:
                 changeGoal = True
             if changeGoal:
+                old_distance = self.env.distance_from_start_to_goal
                 terminal_state = self.env.terminal_state
                 start_state = self.env.start_state
                 col = randint(0, self.env.dimension - 1)
@@ -105,6 +106,8 @@ class ExperimentService:
                 new_terminal_state = (row, col)
                 print("old terminal state: {} new terminal state: {}".format(terminal_state, new_terminal_state))
                 self.env.changeTerminalState(new_terminal_state)
+                print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
+
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
@@ -125,6 +128,7 @@ class ExperimentService:
             if np.random.rand() <= 0.5:
                 changeOrigin = True
             if changeOrigin:
+                old_distance = self.env.distance_from_start_to_goal
                 terminal_state = self.env.terminal_state
                 start_state = self.env.start_state
                 col = randint(0, self.env.dimension - 1)
@@ -133,8 +137,9 @@ class ExperimentService:
                     col = randint(0, self.env.dimension - 1)
                     row = randint(0, self.env.dimension - 1)
                 new_start_state = (row, col)
-                print("old origin state: {} new origin state: {}".format(terminal_state, new_start_state))
+                print("old origin state: {} new origin state: {}".format(start_state, new_start_state))
                 self.env.changeStartState(new_start_state)
+                print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
