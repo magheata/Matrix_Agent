@@ -1,6 +1,5 @@
 from datetime import datetime
 from os import listdir
-from os.path import isfile, join
 
 import gym
 import os
@@ -15,10 +14,6 @@ from Domain.ExperimentType import ExperimentType
 from Infrastructure.ExperimentService import ExperimentService
 
 import Presentation.GraphService as graphService
-
-
-def create_environment():
-    print('Creating environment')
 
 
 class Controller:
@@ -88,6 +83,7 @@ class Controller:
         }
         df = pd.DataFrame(data=d)
         df.to_pickle("./model/{}/{}".format(parentDirectory, file_name))
+        return df
 
     def save_experiment_result(self, samples_results, use_existing_model):
         if use_existing_model:
@@ -103,7 +99,7 @@ class Controller:
         save_experiment = input("Save experiment? y/n : ")
 
         if (save_experiment == 'y') or (save_experiment == 'Y'):
-            self.save_model_results(samples_results)
+            return self.save_model_results(samples_results)
 
     def plot_experiment_results(self, steps_taken):
         mean_steps = []
@@ -127,6 +123,11 @@ class Controller:
         graphService.plot_std_dev_steps(iterations_array, std_var_steps)
         graphService.create_boxplot_actions(steps_taken)
 
+    def show_experiment_results(self, df):
+        show_results = input("Show experiment results? y/n: ")
+        if (show_results == 'y') or (show_results == 'Y'):
+            graphService.plot_model_results(df)
+
     def run_experiment(self):
         samples_results = {}
         if self.experiment_type == ExperimentType.EPISODES:
@@ -139,13 +140,17 @@ class Controller:
             samples_results = self.experimentService.run_experiment_change_origin(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.DISABLE_TILE:
             samples_results = self.experimentService.run_experiment_disable_tile(self.episodes, self.iterations)
-        self.save_experiment_result(samples_results, self.use_existing_model)
+        df = self.save_experiment_result(samples_results, self.use_existing_model)
+
+        if df:
+            self.show_experiment_results(df)
 
     def save_model_results(self, samples_results):
         now = datetime.now()
-        file_name = "{}-{}-{}".format(self.agent.requested_model, self.experiment_type.name, now.strftime("%d_%m-%H_%M"))
+        file_name = "{}-{}-{}".format(self.agent.requested_model, self.experiment_type.name,
+                                      now.strftime("%d_%m-%H_%M"))
         print(file_name)
-        self.saveExperiment(self.agent.requested_model,
+        return self.saveExperiment(self.agent.requested_model,
                             ExperimentType(0),
                             self.agent.requested_model,
                             self.episodes,
@@ -161,5 +166,4 @@ class Controller:
         print(modelExperiments)
         fileName = input("Enter experiment: ")
         with open(os.getcwd() + "/model/{}/{}".format(modelName, fileName), 'rb') as f:
-            data = pickle.load(f)
-            print(data)
+            graphService.plot_model_results(pickle.load(f))

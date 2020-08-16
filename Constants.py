@@ -8,3 +8,5 @@ HEIGHT = 500
 DEFAULT_DIMENSION = 5
 
 BATCH_SIZE = 32
+
+EPISODE_RESULT_COLUMNS = ['experimentType', 'modelUsed', 'episodes', 'iterations', 'episode_results']
