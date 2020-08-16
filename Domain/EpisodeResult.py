@@ -1,10 +1,11 @@
 class EpisodeResult:
-    def __init__(self, iterations, steps_to_completion, total_solved, reward):
+    def __init__(self, iterations, steps_to_completion, total_solved, reward, distance_to_goal):
         self.iterations = iterations
         self.steps_to_completion = steps_to_completion
         self.total_solved = total_solved
         self.reward = reward
         self.error = (iterations - total_solved) / iterations
+        self.distance_to_goal = distance_to_goal
 
     def __str__(self):
         if bool(self.steps_to_completion):

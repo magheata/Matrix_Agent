@@ -51,7 +51,8 @@ class ExperimentService:
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward))
+            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+                                                 self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
@@ -78,7 +79,8 @@ class ExperimentService:
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward))
+            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+                                                 self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
@@ -111,7 +113,8 @@ class ExperimentService:
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward))
+            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+                                                 self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
@@ -143,7 +146,8 @@ class ExperimentService:
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward))
+            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+                                                 self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
@@ -159,7 +163,8 @@ class ExperimentService:
             print("sample", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward))
+            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+                                                 self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results

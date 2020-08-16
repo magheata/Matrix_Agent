@@ -6,6 +6,7 @@ import gym
 import os
 import pandas as pd
 import numpy as np
+import pickle
 
 from random import randint
 
@@ -22,13 +23,14 @@ def create_environment():
 
 class Controller:
 
-    def __init__(self, dimension, episodes, iterations, experiment_type):
-        self.env = self.createEnvironment(dimension)
-        self.agent, self.use_existing_model = self.createAgent(self.env)
-        self.episodes = episodes
-        self.iterations = iterations
-        self.experiment_type = ExperimentType(experiment_type)
-        self.experimentService = ExperimentService(self.env, self.agent)
+    def __init__(self, dimension=0, episodes=0, iterations=0, experiment_type=ExperimentType.EPISODES):
+        if dimension != 0:
+            self.env = self.createEnvironment(dimension)
+            self.agent, self.use_existing_model = self.createAgent(self.env)
+            self.episodes = episodes
+            self.iterations = iterations
+            self.experiment_type = ExperimentType(experiment_type)
+            self.experimentService = ExperimentService(self.env, self.agent)
 
     def createEnvironment(self, dimension):
         env = gym.make("env:MatrixEnv-v0")
@@ -43,7 +45,7 @@ class Controller:
         use_existing_model = False
         state_size = env.observation_space.n
         action_size = env.action_space.n
-        total_models = len(os.listdir(os.getcwd() + '/model_old'))
+        total_models = len(os.listdir(os.getcwd() + '/model'))
         if total_models != 0:
             use_saved_model = input('Another model already exists, use existing model? y/n: ')
             if (use_saved_model == 'y') or (use_saved_model == 'Y'):
@@ -65,6 +67,10 @@ class Controller:
             _agent = DQNAgent(state_size, action_size, False, '')
         self.agent = _agent
         return _agent, use_existing_model
+
+    def listExistingModels(self):
+        total_models = len(os.listdir(os.getcwd() + '/model'))
+        onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
 
     def saveExperiment(self, parentDirectory, experimentType, modelUsed, episodes, iterations, episode_results,
                        file_name):
@@ -146,3 +152,14 @@ class Controller:
                             self.iterations,
                             samples_results,
                             file_name + ".pkl")
+
+    def readExperiment(self):
+        onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
+        print(onlyfiles)
+        modelName = input("Enter model: ")
+        modelExperiments = [f for f in listdir(os.getcwd() + '/model' + '/' + modelName)]
+        print(modelExperiments)
+        fileName = input("Enter experiment: ")
+        with open(os.getcwd() + "/model/{}/{}".format(modelName, fileName), 'rb') as f:
+            data = pickle.load(f)
+            print(data)

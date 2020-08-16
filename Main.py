@@ -45,9 +45,7 @@ def predictActions(env, agent):
             print(Action(np.argmax(prediction[0])))
             print("\n\n")
 
-
-if __name__ == "__main__":
-
+def runNewExperiment():
     episodes_correct = False
     episodes = -1
     while not episodes_correct:
@@ -82,5 +80,23 @@ if __name__ == "__main__":
 
     controller = Controller(int(dimension), int(episodes), int(iterations), int(experiment_type))
     controller.run_experiment()
+
+
+if __name__ == "__main__":
+
+    execType_correct = False
+    execType = -1
+    while not execType_correct:
+        execType = input("Choose execution type: \n 0 - New experiment \n 1 - Show experiment results \n")
+        if execType.isdigit() or execType != 0 or execType != 1:
+            execType_correct = True
+        else:
+            print("Invalid type, choose again. \n\n")
+
+    if int(execType) == 0:
+        runNewExperiment()
+    else:
+        controller = Controller()
+        controller.readExperiment()
     #predictActions(env, agent)
     #
