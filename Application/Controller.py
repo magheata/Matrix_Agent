@@ -6,6 +6,9 @@ import gym
 import os
 import pandas as pd
 import numpy as np
+import pickle
+
+from random import randint
 
 from DQNAgent import DQNAgent
 from Domain.ExperimentType import ExperimentType
@@ -20,30 +23,34 @@ def create_environment():
 
 class Controller:
 
-    def __init__(self, episodes, iterations, experiment_type):
-        self.env = self.createEnvironment()
-        self.agent, self.use_existing_model = self.createAgent(self.env)
-        self.episodes = episodes
-        self.iterations = iterations
-        self.experiment_type = ExperimentType(experiment_type)
-        self.experimentService = ExperimentService(self.env, self.agent)
+    def __init__(self, dimension=0, episodes=0, iterations=0, experiment_type=ExperimentType.EPISODES):
+        if dimension != 0:
+            self.env = self.createEnvironment(dimension)
+            self.agent, self.use_existing_model = self.createAgent(self.env)
+            self.episodes = episodes
+            self.iterations = iterations
+            self.experiment_type = ExperimentType(experiment_type)
+            self.experimentService = ExperimentService(self.env, self.agent)
 
-    def createEnvironment(self):
+    def createEnvironment(self, dimension):
         env = gym.make("env:MatrixEnv-v0")
-        env.init_variables(5, (0, 0), (1, 4))
+        origin = (randint(0, dimension - 1), randint(0, dimension - 1))
+        goal = (randint(0, dimension - 1), randint(0, dimension - 1))
+        env.init_variables(dimension, origin, goal)
+        print(env.s)
+        print("Distance from start to goal is: {}".format(env.distance_from_start_to_goal))
         return env
 
     def createAgent(self, env):
         use_existing_model = False
         state_size = env.observation_space.n
         action_size = env.action_space.n
-        total_models = len(os.listdir(os.getcwd() + '/model_old'))
+        total_models = len(os.listdir(os.getcwd() + '/model'))
         if total_models != 0:
             use_saved_model = input('Another model already exists, use existing model? y/n: ')
             if (use_saved_model == 'y') or (use_saved_model == 'Y'):
                 use_existing_model = True
-                onlyfiles = [f for f in listdir(os.getcwd() + '/model_old') if
-                             isfile(join(os.getcwd() + '/model_old', f))]
+                onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
                 print(onlyfiles)
                 requested_model = input('Enter the model you want to use from the saved models: ')
                 created_agent = False
@@ -60,6 +67,10 @@ class Controller:
             _agent = DQNAgent(state_size, action_size, False, '')
         self.agent = _agent
         return _agent, use_existing_model
+
+    def listExistingModels(self):
+        total_models = len(os.listdir(os.getcwd() + '/model'))
+        onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
 
     def saveExperiment(self, parentDirectory, experimentType, modelUsed, episodes, iterations, episode_results,
                        file_name):
@@ -117,7 +128,17 @@ class Controller:
         graphService.create_boxplot_actions(steps_taken)
 
     def run_experiment(self):
-        samples_results = self.experimentService.run_experiment(self.episodes, self.iterations)
+        samples_results = {}
+        if self.experiment_type == ExperimentType.EPISODES:
+            samples_results = self.experimentService.run_experiment_eps(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_DIMENSION:
+            samples_results = self.experimentService.run_experiment_change_dim(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_GOAL:
+            samples_results = self.experimentService.run_experiment_change_goal(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.CHANGE_ORIGIN:
+            samples_results = self.experimentService.run_experiment_change_origin(self.episodes, self.iterations)
+        elif self.experiment_type == ExperimentType.DISABLE_TILE:
+            samples_results = self.experimentService.run_experiment_disable_tile(self.episodes, self.iterations)
         self.save_experiment_result(samples_results, self.use_existing_model)
 
     def save_model_results(self, samples_results):
@@ -131,3 +152,14 @@ class Controller:
                             self.iterations,
                             samples_results,
                             file_name + ".pkl")
+
+    def readExperiment(self):
+        onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
+        print(onlyfiles)
+        modelName = input("Enter model: ")
+        modelExperiments = [f for f in listdir(os.getcwd() + '/model' + '/' + modelName)]
+        print(modelExperiments)
+        fileName = input("Enter experiment: ")
+        with open(os.getcwd() + "/model/{}/{}".format(modelName, fileName), 'rb') as f:
+            data = pickle.load(f)
+            print(data)

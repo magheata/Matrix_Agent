@@ -60,6 +60,21 @@ class Matrix(gym.Env):
         out[1 + di][2 * dj + 1] = gym.utils.colorize(out[1 + di][2 * dj + 1], 'magenta', highlight=True)
         outfile.write("\n".join(["".join(row) for row in out]) + "\n")
 
+    def changeDimension(self, newDimension):
+        self.init_variables(newDimension, self.start_state, self.terminal_state)
+
+    def changeTerminalState(self, newTerminalState):
+        self.initial_state[self.terminal_state[0], self.terminal_state[1]] = 0
+        self.terminal_state = newTerminalState
+        self.initial_state[self.terminal_state[0], self.terminal_state[1]] = 2
+        self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
+
+    def changeStartState(self, newStartState):
+        self.initial_state[self.start_state[0], self.start_state[1]] = 0
+        self.start_state = newStartState
+        self.initial_state[self.start_state[0], self.start_state[1]] = 1
+        self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
+
     # region STATE
     def encode(self, row, col):
         i = row
@@ -116,6 +131,8 @@ class Matrix(gym.Env):
             if col - 1 < 0:
                 use_penalty = True
             position = (row, new_col)
+        elif parsed_action == Action.STAY:
+            position = (row, col)
         return position, use_penalty
 
     def get_pos_components(self):
@@ -127,14 +144,10 @@ class Matrix(gym.Env):
     # region REWARD
     def determine_reward(self, position, use_penalty, steps_taken):
         reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
-
         if use_penalty:
             reward = reward + Constants.PENALTY_OUT_OF_RANGE
-
         # mirar max acciones
-
         return self.distance_from_start_to_goal - reward
-
     # endregion
 
     def reset(self):
