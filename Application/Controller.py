@@ -10,6 +10,7 @@ import pickle
 from random import randint
 
 from DQNAgent import DQNAgent
+from Domain.Action import Action
 from Domain.ExperimentType import ExperimentType
 from Infrastructure.ExperimentService import ExperimentService
 
@@ -142,7 +143,7 @@ class Controller:
             samples_results = self.experimentService.run_experiment_disable_tile(self.episodes, self.iterations)
         df = self.save_experiment_result(samples_results, self.use_existing_model)
 
-        if df:
+        if not df.empty:
             self.show_experiment_results(df)
 
     def save_model_results(self, samples_results):
@@ -160,10 +161,33 @@ class Controller:
 
     def readExperiment(self):
         onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
+        onlyfiles.sort()
+        onlyfiles.remove('.DS_Store')
         print(onlyfiles)
         modelName = input("Enter model: ")
         modelExperiments = [f for f in listdir(os.getcwd() + '/model' + '/' + modelName)]
+        modelExperiments.sort()
+        modelExperiments.remove(modelName)
         print(modelExperiments)
         fileName = input("Enter experiment: ")
         with open(os.getcwd() + "/model/{}/{}".format(modelName, fileName), 'rb') as f:
             graphService.plot_model_results(pickle.load(f))
+
+    def predictActions(self):
+        map = self.env.s
+        agent_pos = self.env.start_state
+        goal_pos = self.env.terminal_state
+        for i in range(self.env.dimension):
+            for j in range(self.env.dimension):
+                map[agent_pos[0]][agent_pos[1]] = 0
+                agent_pos = (i, j)
+
+                if agent_pos != goal_pos:
+                    map[goal_pos[0]][goal_pos[1]] = 2
+
+                map[agent_pos[0]][agent_pos[1]] = 1
+                print(map)
+                prediction = self.agent._predict(map)
+                print(prediction)
+                print(Action(np.argmax(prediction[0])))
+                print("\n\n")
