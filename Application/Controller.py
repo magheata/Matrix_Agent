@@ -133,14 +133,10 @@ class Controller:
         samples_results = {}
         if self.experiment_type == ExperimentType.EPISODES:
             samples_results = self.experimentService.run_experiment_eps(self.episodes, self.iterations)
-        elif self.experiment_type == ExperimentType.CHANGE_DIMENSION:
-            samples_results = self.experimentService.run_experiment_change_dim(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_GOAL:
             samples_results = self.experimentService.run_experiment_change_goal(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_ORIGIN:
             samples_results = self.experimentService.run_experiment_change_origin(self.episodes, self.iterations)
-        elif self.experiment_type == ExperimentType.DISABLE_TILE:
-            samples_results = self.experimentService.run_experiment_disable_tile(self.episodes, self.iterations)
         df = self.save_experiment_result(samples_results, self.use_existing_model)
 
         if not df.empty:
@@ -163,12 +159,14 @@ class Controller:
         onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
         onlyfiles.sort()
         onlyfiles.remove('.DS_Store')
-        print(onlyfiles)
+        for file in onlyfiles:
+            print(file)
         modelName = input("Enter model: ")
         modelExperiments = [f for f in listdir(os.getcwd() + '/model' + '/' + modelName)]
         modelExperiments.sort()
         modelExperiments.remove(modelName)
-        print(modelExperiments)
+        for experiment in modelExperiments:
+            print(experiment)
         fileName = input("Enter experiment: ")
         with open(os.getcwd() + "/model/{}/{}".format(modelName, fileName), 'rb') as f:
             graphService.plot_model_results(pickle.load(f))

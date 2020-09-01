@@ -45,7 +45,7 @@ def runNewExperiment():
 
     controller = Controller(int(dimension), int(episodes), int(iterations), int(experiment_type))
     controller.run_experiment()
-    #controller.predictActions() 
+    #controller.predictActions()
 
 
 if __name__ == "__main__":
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     execType_correct = False
     execType = -1
     while not execType_correct:
-        execType = input("Choose execution type: \n 0 - New experiment \n 1 - Show experiment results \n \n 2 - Show model prediction \n")
+        execType = input("Choose execution type: \n 0 - New experiment \n 1 - Show experiment results \n 2 - Show model prediction \n")
         if execType.isdigit() or execType != 0 or execType != 1 or execType != 2:
             execType_correct = True
         else:

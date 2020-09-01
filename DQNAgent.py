@@ -38,9 +38,9 @@ class DQNAgent:
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(5, input_dim=self.state_size, activation='softmax'))
+        model.add(Dense(4, input_dim=self.state_size, activation='softmax'))
         model.add(Dense(10, activation='softmax'))
-        model.add(Dense(5, ))
+        model.add(Dense(4, ))
 
         model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
