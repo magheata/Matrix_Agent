@@ -10,5 +10,5 @@ class EpisodeResult:
     def __str__(self):
         if bool(self.steps_to_completion):
             return "iterations {}, steps_to_completion {}, total_solved {}, error {}" \
-                .format(self.iterations, self.steps_to_completion, self.total_solved, self.error)
+                .format(self.iterations, self.steps_to_completion, self.total_solved, self.error,)
         return ""

@@ -99,13 +99,13 @@ class Matrix(gym.Env):
     def step(self, action):
         pass
 
-    def step_action(self, action, steps_taken):
+    def step_action(self, action):
         assert self.action_space.contains(action)
         row, col = self.get_pos_components()
         self.s[row, col] = 0
         position, use_penalty = self.get_next_position(action, row, col)
         self.s[position[0], position[1]] = 1
-        return self.s, self.determine_reward(position, use_penalty, steps_taken), position == self.terminal_state
+        return self.s, self.determine_reward(position, use_penalty), position == self.terminal_state
 
     def get_next_position(self, action, row, col):
         parsed_action = Action(action)
@@ -131,8 +131,6 @@ class Matrix(gym.Env):
             if col - 1 < 0:
                 use_penalty = True
             position = (row, new_col)
-        elif parsed_action == Action.STAY:
-            position = (row, col)
         return position, use_penalty
 
     def get_pos_components(self):
@@ -142,7 +140,7 @@ class Matrix(gym.Env):
     # endregion
 
     # region REWARD
-    def determine_reward(self, position, use_penalty, steps_taken):
+    def determine_reward(self, position, use_penalty):
         reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
         if use_penalty:
             reward = reward + Constants.PENALTY_OUT_OF_RANGE

@@ -3,6 +3,7 @@ import random
 import numpy as np
 from collections import deque
 from keras.models import Sequential
+from keras import activations
 from keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
 
@@ -37,9 +38,9 @@ class DQNAgent:
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(5, input_dim=self.state_size, activation='softmax'))
-        model.add(Dense(10, activation='relu'))
-        model.add(Dense(5,))
+        model.add(Dense(4, input_dim=self.state_size, activation='softmax'))
+        model.add(Dense(10, activation='softmax'))
+        model.add(Dense(4, ))
 
         model.compile(loss='mse', optimizer=Adam(lr=0.8))
         return model
@@ -105,3 +106,8 @@ class DQNAgent:
         existing_model = tf.keras.models.load_model(requested_model, compile=False)
         self.model = self._build_model()
         self.model.set_weights(existing_model.get_weights())
+        #for layer in self.model.layers:
+        #    layer.activation = activations.softmax
+        #self.model.save(requested_model)
+        #self.model = tf.keras.models.load_model(requested_model, compile=False)
+        #self.model.compile(loss='mse', optimizer=Adam(lr=0.8))
