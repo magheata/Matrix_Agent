@@ -45,7 +45,7 @@ class ExperimentService:
             if not done:
                 steps_taken_for_completion.append(0)
             episode_rewards.append(episode_reward)
-            print(reward)
+            #print(reward)
         return solved_eps, steps_taken_for_completion, episode_rewards
 
     def run_experiment_eps(self, episodes, iterations):
