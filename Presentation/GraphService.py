@@ -23,7 +23,7 @@ def plot_mean_steps(total_iterations, mean_steps, distance_to_goal):
         plt.plot(total_iterations, distance_to_goal, color='r')
     plt.xlabel('Iteration')
     plt.ylabel('Mean steps taken')
-    plt.title('Variation of the mean in each iteration')
+    plt.title('Steps taken in each iteration to reach goal')
     plt.show()
 
 
@@ -31,7 +31,7 @@ def plot_variance_steps(total_iterations, variance_steps):
     plt.plot(total_iterations, variance_steps, color='g')
     plt.xlabel('Iteration')
     plt.ylabel('Variance of the steps taken')
-    plt.title('Variation of the variance in each iteration')
+    plt.title('Variance of steps taken to reach goal')
     plt.show()
 
 
@@ -39,7 +39,7 @@ def plot_std_dev_steps(total_iterations, std_dev_steps):
     plt.plot(total_iterations, std_dev_steps, color='g')
     plt.xlabel('Iteration')
     plt.ylabel('Standard deviation of the steps taken')
-    plt.title('Variation of the std dev in each iteration')
+    plt.title('Std deviation of the steps taken to reach goal')
     plt.show()
 
 
@@ -47,7 +47,7 @@ def plot_reward(total_iterations, reward_results):
     plt.plot(total_iterations, reward_results, color='g')
     plt.xlabel('Iteration')
     plt.ylabel('Reward')
-    plt.title('Variation of the reward in each iteration')
+    plt.title('Final reward in each iteration')
     plt.show()
 
 
@@ -55,7 +55,7 @@ def plot_error_steps(total_iterations, error_steps_results):
     plt.plot(total_iterations, error_steps_results, color='g')
     plt.xlabel('Iteration')
     plt.ylabel('Error')
-    plt.title('Variation of the error in steps in each iteration')
+    plt.title('Steps taken to reach goal in each iteration')
     plt.show()
 
 
@@ -78,7 +78,7 @@ def plot_model_results(df):
             if hasattr(episode_result, 'distance_to_goal'):
                 for step in steps_array:
                     error = episode_result.distance_to_goal - step
-                    _error_steps.append(error)
+                    _error_steps.append(step)
                 error_steps.append(np.array(_error_steps).mean())
         else:
             mean_steps.append(0)

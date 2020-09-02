@@ -11,15 +11,15 @@ class ExperimentService:
         self.env = env
         self.agent = agent
 
-    def compute_episodes(self, total_episodes):
+    def compute_episodes(self, total_iterations):
         solved_eps = 0
         steps_taken_for_completion = []
-        for episode in range(total_episodes):
+        for iteration in range(total_iterations):
             actions = []
             env_states = []
             state = self.env.reset_action()
-            print('episode {}/{}'.format(episode, total_episodes))
-            for time in range(30):
+            print('iteration {}/{}'.format(iteration, total_iterations))
+            for step in range(30):
                 env_states.append(self.env.s.copy())
                 action = self.agent.act(state)
                 next_state, reward, done = self.env.step_action(action)
@@ -27,8 +27,8 @@ class ExperimentService:
                 state = next_state
                 actions.append(action)
                 if done:
-                    print('         - SOLVED! episode {}/{} steps taken: {}'.format(episode, total_episodes,
-                                                                                    len(actions)))
+                    print('         - SOLVED! iteration {}/{} steps taken: {} reward: {}'.format(iteration, total_iterations,
+                                                                                               len(actions), reward))
                     steps_taken_for_completion.append(len(actions))
                     solved_eps = solved_eps + 1
                     actions_enum = []
@@ -47,15 +47,15 @@ class ExperimentService:
         episode_results = []
         samples_results = {}
         steps_taken = []
-        for sample in range(episodes):
-            print("sample", sample)
+        for episode in range(episodes):
+            print("episode", episode)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("episodes: {} total_solved: {}".format(iterations, total_solved))
+            print("iterations: {} total_solved: {} total reward: {}".format(iterations, total_solved, total_reward))
             print("\n\n")
-            samples_results[sample] = episode_results
+            samples_results[episode] = episode_results
             episode_results = []
         return samples_results
 
@@ -81,12 +81,12 @@ class ExperimentService:
                 self.env.changeTerminalState(new_terminal_state)
                 print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
 
-            print("sample", sample)
+            print("episode", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("episodes: {} total_solved: {}".format(iterations, total_solved))
+            print("iterations: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
             episode_results = []
@@ -114,12 +114,12 @@ class ExperimentService:
                 print("old origin state: {} new origin state: {}".format(start_state, new_start_state))
                 self.env.changeStartState(new_start_state)
                 print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
-            print("sample", sample)
+            print("episode", sample)
             total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("episodes: {} total_solved: {}".format(iterations, total_solved))
+            print("iterations: {} total_solved: {}".format(iterations, total_solved))
             print("\n\n")
             samples_results[sample] = episode_results
             episode_results = []
