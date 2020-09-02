@@ -110,7 +110,6 @@ class Matrix(gym.Env):
     def get_next_position(self, action, row, col):
         parsed_action = Action(action)
         use_penalty = False
-
         if parsed_action == Action.DOWN:
             new_row = min(row + 1, self.max_row)
             if row + 1 > self.max_row:

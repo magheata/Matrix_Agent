@@ -5,29 +5,33 @@ from Domain.EpisodeResult import EpisodeResult
 
 from random import randint
 
+
 class ExperimentService:
 
     def __init__(self, env, agent):
         self.env = env
         self.agent = agent
 
-    def compute_episodes(self, total_iterations):
+    def compute_iteration(self, episodes, steps):
         solved_eps = 0
         steps_taken_for_completion = []
-        for iteration in range(total_iterations):
+        episode_rewards = []
+        for episode in range(episodes):
             actions = []
             env_states = []
+            episode_reward = []
             state = self.env.reset_action()
-            print('iteration {}/{}'.format(iteration, total_iterations))
-            for step in range(30):
+            print('episode {}/{}'.format(episode, episodes))
+            for step in range(steps):
                 env_states.append(self.env.s.copy())
                 action = self.agent.act(state)
                 next_state, reward, done = self.env.step_action(action)
+                episode_reward.append(reward)
                 self.agent.memorize(state, action, reward, next_state, done)
                 state = next_state
                 actions.append(action)
                 if done:
-                    print('         - SOLVED! iteration {}/{} steps taken: {} reward: {}'.format(iteration, total_iterations,
+                    print('         - SOLVED! episode {}/{} steps taken: {} reward: {}'.format(episode, episodes,
                                                                                                len(actions), reward))
                     steps_taken_for_completion.append(len(actions))
                     solved_eps = solved_eps + 1
@@ -38,24 +42,26 @@ class ExperimentService:
                     break
                 if len(self.agent.memory) > Constants.BATCH_SIZE:
                     self.agent.replay(Constants.BATCH_SIZE)
-        # último reward
-        row, col = self.env.get_pos_components()
-        total_reward = self.env.determine_reward((row, col), False)
-        return solved_eps, steps_taken_for_completion, total_reward
+            if not done:
+                steps_taken_for_completion.append(0)
+            episode_rewards.append(episode_reward)
+            print(reward)
+        return solved_eps, steps_taken_for_completion, episode_rewards
 
     def run_experiment_eps(self, episodes, iterations):
         episode_results = []
         samples_results = {}
         steps_taken = []
-        for episode in range(episodes):
-            print("episode", episode)
-            total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
+        for it in range(iterations):
+            print("iteration", it)
+            total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
+                                                                                            Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved, episode_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("iterations: {} total_solved: {} total reward: {}".format(iterations, total_solved, total_reward))
+            print("iterations: {} total_solved: {} total reward: {}".format(iterations, total_solved, episode_reward))
             print("\n\n")
-            samples_results[episode] = episode_results
+            samples_results[it] = episode_results
             episode_results = []
         return samples_results
 
@@ -82,7 +88,8 @@ class ExperimentService:
                 print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
 
             print("episode", sample)
-            total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
+            total_solved, steps_taken_for_completion, total_reward = self.compute_iteration(iterations,
+                                                                                            Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
                                                  self.env.distance_from_start_to_goal))
@@ -115,7 +122,8 @@ class ExperimentService:
                 self.env.changeStartState(new_start_state)
                 print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
             print("episode", sample)
-            total_solved, steps_taken_for_completion, total_reward = self.compute_episodes(iterations)
+            total_solved, steps_taken_for_completion, total_reward = self.compute_iteration(iterations,
+                                                                                            Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
                                                  self.env.distance_from_start_to_goal))
