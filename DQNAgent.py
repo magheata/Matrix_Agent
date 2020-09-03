@@ -61,25 +61,6 @@ class DQNAgent:
             return np.argmax(act_values[0])
         return random.randrange(self.action_size)
 
-    def replay_old(self, batch_size):
-        minibatch = random.sample(self.memory, batch_size)
-        states, targets_f = [], []
-        for state, action, reward, next_state, done in minibatch:
-            if state is not None:
-                s = state.reshape((1, self.dim * self.dim))
-                reward_model = self.model.predict(s)
-                states.append(s)
-                targets_f.append(reward_model)
-
-        states = np.array(states).reshape(-1, self.dim * self.dim)
-        targets_f = np.array(targets_f).reshape(-1, self.action_size)
-        history = self.model.fit(states, targets_f, epochs=1, verbose=0)
-        # Keeping track of loss
-        loss = history.history['loss'][0]
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
-        return loss
-
     def replay(self, batch_size):
 
         # minibatch = random.sample(self.memory, batch_size)
@@ -138,23 +119,6 @@ class DQNAgent:
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
         return loss
-
-    def replay_prueba(self, batch_size):
-        minibatch = random.sample(self.memory, batch_size)
-        for state, action, reward, next_state, done in minibatch:
-            s = state.reshape((1, self.dim * self.dim))
-            ns = next_state.reshape((1, self.dim * self.dim))
-            target = self.model.predict(s)
-            if done:
-                target[0][action] = reward
-            else:
-                # a = self.model.predict(next_state)[0]
-                t = self.target_model.predict(ns)[0]
-                target[0, action] = reward + self.gamma * np.amax(t)
-                # target[0][action] = reward + self.gamma * t[np.argmax(a)]
-            self.model.fit(state, target, epochs=1, verbose=0)
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
 
     def load(self, name):
         self.model.load_weights(name)
