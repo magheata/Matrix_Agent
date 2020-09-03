@@ -11,4 +11,4 @@ BATCH_SIZE = 32
 
 EPISODE_RESULT_COLUMNS = ['experimentType', 'modelUsed', 'episodes', 'iterations', 'episode_results']
 
-MAX_STEPS = 20
+MAX_STEPS = 50

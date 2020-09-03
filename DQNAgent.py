@@ -3,7 +3,6 @@ import random
 import numpy as np
 from collections import deque
 from keras.models import Sequential
-from keras import activations
 from keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
 
@@ -11,7 +10,8 @@ import tensorflow as tf
 
 
 class DQNAgent:
-    def __init__(self, state_size, action_size, use_existing_model, requested_model):
+    def __init__(self, controller, state_size, action_size, use_existing_model, requested_model):
+        self.controller = controller
         self.state_size = state_size
         self.dim = int(np.sqrt(self.state_size))
         self.action_size = action_size
@@ -97,8 +97,11 @@ class DQNAgent:
 
             # si el juego no acabo!!! tendremos que mejorar mucho más !
             if not done:
-                reward_real = (reward_real + self.gamma * np.amax(self.model.predict(ns)))  # la recompensa aprendida
+                reward_real = (reward + self.gamma * np.amax(self.model.predict(ns)))  # la recompensa aprendida
 
+            reward_real /= np.max(np.abs(reward_real), axis=0)  # la recompensa aprendida
+
+            reward_real = np.reshape(reward_real, (1, self.action_size))
             # Ahora corregiremos los pesos. Vamos a hacer que converja más rápidamente.
             # Como los pesos, se generaron aleatoriamente... mejor si les damos un empujón.
 
@@ -109,6 +112,10 @@ class DQNAgent:
             reward_model = self.model.predict(s)
 
             ## TODO start
+            for i in range(len(reward_real)):
+                reward_model[i] = reward_real[i]
+            #reward_model[0, action] = reward_real[0, action]
+
             # Te dejo este punto para ti, no quiero liarla con el shape del reward_real.
             # Necesitamos que el el reward_model sea igual a si mismo, pero asignando lo aprendido en el reward_real en solo aquel punto donde estaba el agente.
             # Es decir, si el agente ESTABA en la posición [X,Y], entonces el reward_model[X,Y]=reward_real[X,Y];
@@ -123,12 +130,31 @@ class DQNAgent:
 
         # Ahora volvemos a recalcular el modelo con lo que tenia que haber sido, con lo aprendido.
         history = self.model.fit(states, targets_f, epochs=1, verbose=0)
+        #print("\n\n FIT PREDICT \n \n")
 
+        #self.controller.predictActions()
         # Keeping track of loss
         loss = history.history['loss'][0]
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
         return loss
+
+    def replay_prueba(self, batch_size):
+        minibatch = random.sample(self.memory, batch_size)
+        for state, action, reward, next_state, done in minibatch:
+            s = state.reshape((1, self.dim * self.dim))
+            ns = next_state.reshape((1, self.dim * self.dim))
+            target = self.model.predict(s)
+            if done:
+                target[0][action] = reward
+            else:
+                # a = self.model.predict(next_state)[0]
+                t = self.target_model.predict(ns)[0]
+                target[0, action] = reward + self.gamma * np.amax(t)
+                # target[0][action] = reward + self.gamma * t[np.argmax(a)]
+            self.model.fit(state, target, epochs=1, verbose=0)
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
 
     def load(self, name):
         self.model.load_weights(name)

@@ -30,8 +30,10 @@ class Controller:
 
     def createEnvironment(self, dimension):
         env = gym.make("env:MatrixEnv-v0")
-        origin = (randint(0, dimension - 1), randint(0, dimension - 1))
-        goal = (randint(0, dimension - 1), randint(0, dimension - 1))
+        origin = (0, 0)
+        goal = (4, 4)
+        #origin = (randint(0, dimension - 1), randint(0, dimension - 1))
+        #goal = (randint(0, dimension - 1), randint(0, dimension - 1))
         env.init_variables(dimension, origin, goal)
         print(env.s)
         print("Distance from start to goal is: {}".format(env.distance_from_start_to_goal))
@@ -52,15 +54,15 @@ class Controller:
                 created_agent = False
                 while not created_agent:
                     if requested_model in onlyfiles:
-                        _agent = DQNAgent(state_size, action_size, True, requested_model)
+                        _agent = DQNAgent(self, state_size, action_size, True, requested_model)
                         created_agent = True
                     else:
                         print("Model does not exists. \n")
                         requested_model = input('Enter the model you want to use from the saved models: ')
             else:
-                _agent = DQNAgent(state_size, action_size, False, '')
+                _agent = DQNAgent(self, state_size, action_size, False, '')
         else:
-            _agent = DQNAgent(state_size, action_size, False, '')
+            _agent = DQNAgent(self, state_size, action_size, False, '')
         self.agent = _agent
         return _agent, use_existing_model
 
@@ -172,20 +174,30 @@ class Controller:
             graphService.plot_model_results(pickle.load(f))
 
     def predictActions(self):
-        map = self.env.s
+        map = np.zeros((5, 5))
+        row = 0
+        col = 0
         agent_pos = self.env.start_state
         goal_pos = self.env.terminal_state
         for i in range(self.env.dimension):
             for j in range(self.env.dimension):
                 map[agent_pos[0]][agent_pos[1]] = 0
-                agent_pos = (i, j)
-
+                agent_pos = (row, col)
+                print(agent_pos)
                 if agent_pos != goal_pos:
                     map[goal_pos[0]][goal_pos[1]] = 2
 
                 map[agent_pos[0]][agent_pos[1]] = 1
-                print(map)
+
                 prediction = self.agent._predict(map)
-                print(prediction)
-                print(Action(np.argmax(prediction[0])))
-                print("\n\n")
+
+                for i in range(len(map)):
+                    print("             {}".format(map[i]))
+
+                print("             {}".format(prediction))
+                action_taken = Action(np.argmax(prediction[0]))
+                print("             CHOSEN ACTION: {}".format(action_taken.name))
+                print("\n")
+                col = col + 1
+            row = row + 1
+            col = 0
