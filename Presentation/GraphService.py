@@ -37,7 +37,7 @@ def plot_variance_steps(total_iterations, variance_steps):
 
 def plot_std_dev_steps(total_iterations, std_dev_steps):
     plt.plot(total_iterations, std_dev_steps, color='g')
-    plt.xlabel('Iteration')
+    plt.xlabel('Episode')
     plt.ylabel('Standard deviation of the steps taken')
     plt.title('Std deviation of the steps taken to reach goal')
     plt.show()
@@ -45,7 +45,7 @@ def plot_std_dev_steps(total_iterations, std_dev_steps):
 
 def plot_reward(total_iterations, reward_results):
     plt.plot(total_iterations, reward_results, color='g')
-    plt.xlabel('Iteration')
+    plt.xlabel('Episode')
     plt.ylabel('Reward')
     plt.title('Final reward in each iteration')
     plt.show()
@@ -53,9 +53,9 @@ def plot_reward(total_iterations, reward_results):
 
 def plot_error_steps(total_iterations, error_steps_results):
     plt.plot(total_iterations, error_steps_results, color='g')
-    plt.xlabel('Iteration')
+    plt.xlabel('Episode')
     plt.ylabel('Error')
-    plt.title('Steps taken to reach goal in each iteration')
+    plt.title('Steps taken to reach goal in each episode')
     plt.show()
 
 

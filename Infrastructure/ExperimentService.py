@@ -27,7 +27,8 @@ class ExperimentService:
                 action = self.agent.act(state)
                 next_state, reward, done = self.env.step_action(action)
                 episode_reward.append(reward)
-                self.agent.memorize(state, action, reward, next_state, done)
+                total_reward = self.agent._predict(state)
+                self.agent.memorize(state, action, total_reward, next_state, done)
                 state = next_state
                 actions.append(action)
                 if done:
@@ -44,9 +45,39 @@ class ExperimentService:
                     self.agent.replay(Constants.BATCH_SIZE)
             if not done:
                 steps_taken_for_completion.append(0)
+            self.predictActions()
             episode_rewards.append(episode_reward)
-            #print(reward)
+            print("reward: {}".format(total_reward))
         return solved_eps, steps_taken_for_completion, episode_rewards
+
+    def predictActions(self):
+        map = np.zeros((5, 5))
+        row = 0
+        col = 0
+        agent_pos = self.env.start_state
+        goal_pos = self.env.terminal_state
+        for i in range(self.env.dimension):
+            for j in range(self.env.dimension):
+                map[agent_pos[0]][agent_pos[1]] = 0
+                agent_pos = (row, col)
+                print(agent_pos)
+                if agent_pos != goal_pos:
+                    map[goal_pos[0]][goal_pos[1]] = 2
+
+                map[agent_pos[0]][agent_pos[1]] = 1
+
+                prediction = self.agent._predict(map)
+
+                for i in range(len(map)):
+                    print("             {}".format(map[i]))
+
+                print("             {}".format(prediction))
+                action_taken = Action(np.argmax(prediction[0]))
+                print("             CHOSEN ACTION: {}".format(action_taken.name))
+                print("\n")
+                col = col + 1
+            row = row + 1
+            col = 0
 
     def run_experiment_eps(self, episodes, iterations):
         episode_results = []
