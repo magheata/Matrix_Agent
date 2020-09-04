@@ -45,7 +45,7 @@ class ExperimentService:
                     self.agent.replay(Constants.BATCH_SIZE)
             if not done:
                 steps_taken_for_completion.append(0)
-            self.predictActions()
+            #self.predictActions()
             episode_rewards.append(episode_reward)
             print("reward: {}".format(total_reward))
         return solved_eps, steps_taken_for_completion, episode_rewards

@@ -21,15 +21,15 @@ def plot_mean_steps(total_iterations, mean_steps, distance_to_goal):
     plt.plot(total_iterations, mean_steps, color='g')
     #if len(distance_to_goal) > 0:
     #    plt.plot(total_iterations, ones(size(distance_to_goal, color='r')
-    plt.xlabel('Iteration')
+    plt.xlabel('Episode')
     plt.ylabel('Mean steps taken')
-    plt.title('Steps taken in each iteration to reach goal')
+    plt.title('Steps taken in each episode to reach goal')
     plt.show()
 
 
 def plot_variance_steps(total_iterations, variance_steps):
     plt.plot(total_iterations, variance_steps, color='g')
-    plt.xlabel('Iteration')
+    plt.xlabel('Episode')
     plt.ylabel('Variance of the steps taken')
     plt.title('Variance of steps taken to reach goal')
     plt.show()
@@ -47,7 +47,7 @@ def plot_reward(total_iterations, reward_results):
     plt.plot(total_iterations, reward_results, color='g')
     plt.xlabel('Episode')
     plt.ylabel('Reward')
-    plt.title('Final reward in each iteration')
+    plt.title('Final reward in each episode')
     plt.show()
 
 
