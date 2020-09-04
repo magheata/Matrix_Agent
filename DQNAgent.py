@@ -21,7 +21,7 @@ class DQNAgent:
         self.epsilon = 1.0  # exploration rate
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.99
-        self.learning_rate = 0.4
+        self.learning_rate = 0.001
         self.model = self._build_model()
         self.target_model = self._build_model()
         self.requested_model = requested_model
@@ -39,8 +39,8 @@ class DQNAgent:
     def _build_model(self):
         # Neural Net for Deep-Q learning Model
         model = Sequential()
-        model.add(Dense(20, input_dim=self.state_size, activation='softmax'))
-        model.add(Dense(20, activation='softmax'))
+        model.add(Dense(25, input_dim=self.state_size, activation='softmax'))
+        model.add(Dense(25, activation='softmax'))
         model.add(Dense(4, ))
 
         model.compile(loss='mse', optimizer=Adam(lr=self.learning_rate))
@@ -61,15 +61,11 @@ class DQNAgent:
         return np.argmax(act_values[0])
 
     def replay(self, batch_size):
-
         # minibatch = random.sample(self.memory, batch_size)
         minibatch = self.memory  # fuerza a utilizarlas todas. Hay pocas combinaciones. Lo ideal es la anterior línea de código...
-
         states, targets_f = [], []
         for state, action, reward, next_state, done in minibatch:
-
             # para todas las acciones vamos a corregir el reward, aprendemos de los fallos/aciertos.
-
             # partimos del estado inicial, y el que hemos obtenido con la acción.
             s = state.reshape((1, self.dim * self.dim))
             ns = next_state.reshape((1, self.dim * self.dim))
@@ -79,21 +75,17 @@ class DQNAgent:
             if not done:
                 reward_real = (reward + self.gamma * np.amax(self.model.predict(ns)))  # la recompensa aprendida
 
-            max_value = np.max(np.max(np.abs(reward_real), axis=0))
-
-            reward_real /= max_value  # la recompensa aprendida
-
+            reward_real /= np.max(np.max(np.abs(reward_real), axis=0))  # la recompensa aprendida
             reward_real = np.reshape(reward_real, (1, self.action_size))
+
             # Ahora corregiremos los pesos. Vamos a hacer que converja más rápidamente.
             # Como los pesos, se generaron aleatoriamente... mejor si les damos un empujón.
-
             # Partimos de lo que el modelo dijo en su momento: el reward que calculo.
             # No tiene pq ser el valor del reward que dio, ahora dará otra solución pues el modelo ha ido evolucionando.
             # Lo tenemos que volver a calcular
             #reward_model = self.model.predict(s).reshape((self.dim, self.dim, self.action_size))
             reward_model = self.model.predict(s)
 
-            ## TODO start
             #for i in range(len(reward_real)):
             #    reward_model[i] = reward_real[i]
             reward_model[0, action] = reward_real[0, action]
@@ -101,7 +93,6 @@ class DQNAgent:
             # Te dejo este punto para ti, no quiero liarla con el shape del reward_real.
             # Necesitamos que el el reward_model sea igual a si mismo, pero asignando lo aprendido en el reward_real en solo aquel punto donde estaba el agente.
             # Es decir, si el agente ESTABA en la posición [X,Y], entonces el reward_model[X,Y]=reward_real[X,Y];
-            ## TODO end. Quizás tengas que hacer un for, o un if...
 
             # El resto sigue igual. Guardamos el estado y su recompensa corregida.
             states.append(s)
@@ -113,7 +104,6 @@ class DQNAgent:
         # Ahora volvemos a recalcular el modelo con lo que tenia que haber sido, con lo aprendido.
         history = self.model.fit(states, targets_f, epochs=1, verbose=0)
         #print("\n\n FIT PREDICT \n \n")
-
         #self.controller.predictActions()
         # Keeping track of loss
         loss = history.history['loss'][0]
