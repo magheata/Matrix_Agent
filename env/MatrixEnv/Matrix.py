@@ -144,7 +144,7 @@ class Matrix(gym.Env):
     # region REWARD
     def determine_reward(self, position, use_penalty):
         if use_penalty:
-            return -1
+            return -0.1
         dist = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
         return 1 - (dist / float(self.max_length))
     # endregion
