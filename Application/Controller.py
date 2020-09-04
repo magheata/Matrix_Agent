@@ -30,10 +30,8 @@ class Controller:
 
     def createEnvironment(self, dimension):
         env = gym.make("env:MatrixEnv-v0")
-        origin = (0, 0)
-        goal = (4, 4)
-        #origin = (randint(0, dimension - 1), randint(0, dimension - 1))
-        #goal = (randint(0, dimension - 1), randint(0, dimension - 1))
+        origin = (randint(0, dimension - 1), randint(0, dimension - 1))
+        goal = (randint(0, dimension - 1), randint(0, dimension - 1))
         env.init_variables(dimension, origin, goal)
         print(env.s)
         print("Distance from start to goal is: {}".format(env.distance_from_start_to_goal))

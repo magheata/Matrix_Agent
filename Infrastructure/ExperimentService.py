@@ -27,8 +27,7 @@ class ExperimentService:
                 action = self.agent.act(state)
                 next_state, reward, done = self.env.step_action(action)
                 episode_reward.append(reward)
-                total_reward = self.agent._predict(state)
-                self.agent.memorize(state, action, total_reward, next_state, done)
+                self.agent.memorize(state, action, reward, next_state, done)
                 state = next_state
                 actions.append(action)
                 if done:
@@ -41,13 +40,12 @@ class ExperimentService:
                         actions_enum.append(Action(i))
                     self.agent.update_target_model()
                     break
-                if len(self.agent.memory) > Constants.BATCH_SIZE:
-                    self.agent.replay(Constants.BATCH_SIZE)
+                if len(self.agent.memory) > 10:
+                    self.agent.replay(5)
             if not done:
-                steps_taken_for_completion.append(0)
+                steps_taken_for_completion.append(steps)
             #self.predictActions()
             episode_rewards.append(episode_reward)
-            print("reward: {}".format(total_reward))
         return solved_eps, steps_taken_for_completion, episode_rewards
 
     def predictActions(self):

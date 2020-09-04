@@ -34,6 +34,7 @@ class Matrix(gym.Env):
         self.num_columns = self.dimension
         self.max_row = self.num_rows - 1
         self.max_col = self.num_columns - 1
+        self.max_length = dimension + (dimension - 2)  # It is the diagonal length in a matrix using Manhattan distance
         self.shape = np.zeros(shape=(self.num_rows, self.num_columns))
         self.terminal_state = terminal_state
         self.start_state = start_state
@@ -101,7 +102,9 @@ class Matrix(gym.Env):
 
     def step_action(self, action):
         assert self.action_space.contains(action)
-        row, col = self.get_pos_components()
+        _row, _col = self.get_pos_components()
+        row = _row[0]
+        col = _col[0]
         self.s[row, col] = 0
         position, use_penalty = self.get_next_position(action, row, col)
         self.s[position[0], position[1]] = 1
@@ -140,11 +143,10 @@ class Matrix(gym.Env):
 
     # region REWARD
     def determine_reward(self, position, use_penalty):
-        reward = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
         if use_penalty:
-            reward = reward + Constants.PENALTY_OUT_OF_RANGE
-        # mirar max acciones
-        return self.distance_from_start_to_goal - reward
+            return -1
+        dist = distance.cityblock(position, self.terminal_state)  # calcular distancia Manhattan
+        return 1 - (dist / float(self.max_length))
     # endregion
 
     def reset(self):
