@@ -88,77 +88,61 @@ class ExperimentService:
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved, episode_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("iterations: {} total_solved: {} total reward: {}".format(iterations, total_solved, episode_reward))
+            print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
             samples_results[it] = episode_results
             episode_results = []
         return samples_results
 
-    def run_experiment_change_goal(self, episodes, iterations):
-        changeGoal = False
+    def run_experiment_change_location(self, episodes, iterations, changeOrigin):
+        changeLocation = False
         episode_results = []
         samples_results = {}
         steps_taken = []
-        for sample in range(episodes):
+        for it in range(iterations):
             if np.random.rand() <= 0.5:
-                changeGoal = True
-            if changeGoal:
-                old_distance = self.env.distance_from_start_to_goal
-                terminal_state = self.env.terminal_state
-                start_state = self.env.start_state
-                col = randint(0, self.env.dimension - 1)
-                row = randint(0, self.env.dimension - 1)
-                while ((row, col) == terminal_state) or ((row, col) == start_state):
-                    col = randint(0, self.env.dimension - 1)
-                    row = randint(0, self.env.dimension - 1)
-                new_terminal_state = (row, col)
-                print("old terminal state: {} new terminal state: {}".format(terminal_state, new_terminal_state))
-                self.env.changeTerminalState(new_terminal_state)
-                print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
-
-            print("episode", sample)
-            total_solved, steps_taken_for_completion, total_reward = self.compute_iteration(iterations,
+                changeLocation = True
+            if changeLocation:
+                if changeOrigin:
+                    self.changeOrigin()
+                else:
+                    self.changeGoal()
+            print("iteration", it)
+            total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
                                                                                             Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
+            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved, episode_reward,
                                                  self.env.distance_from_start_to_goal))
-            print("iterations: {} total_solved: {}".format(iterations, total_solved))
+            print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
-            samples_results[sample] = episode_results
+            samples_results[it] = episode_results
             episode_results = []
-            changeGoal = False
+            changeLocation = False
         return samples_results
 
-    def run_experiment_change_origin(self, episodes, iterations):
-        changeOrigin = False
-        episode_results = []
-        samples_results = {}
-        steps_taken = []
-        for sample in range(episodes):
-            if np.random.rand() <= 0.5:
-                changeOrigin = True
-            if changeOrigin:
-                old_distance = self.env.distance_from_start_to_goal
-                terminal_state = self.env.terminal_state
-                start_state = self.env.start_state
-                col = randint(0, self.env.dimension - 1)
-                row = randint(0, self.env.dimension - 1)
-                while ((row, col) == terminal_state) or ((row, col) == start_state):
-                    col = randint(0, self.env.dimension - 1)
-                    row = randint(0, self.env.dimension - 1)
-                new_start_state = (row, col)
-                print("old origin state: {} new origin state: {}".format(start_state, new_start_state))
-                self.env.changeStartState(new_start_state)
-                print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
-            print("episode", sample)
-            total_solved, steps_taken_for_completion, total_reward = self.compute_iteration(iterations,
-                                                                                            Constants.MAX_STEPS)
-            steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(iterations, steps_taken_for_completion, total_solved, total_reward,
-                                                 self.env.distance_from_start_to_goal))
-            print("iterations: {} total_solved: {}".format(iterations, total_solved))
-            print("\n\n")
-            samples_results[sample] = episode_results
-            episode_results = []
-            changeOrigin = False
-        return samples_results
+    def changeOrigin(self):
+        old_distance = self.env.distance_from_start_to_goal
+        start_state = self.env.start_state
+        new_start_state = self.getNewLocation()
+        print("old origin state: {} new origin state: {}".format(start_state, new_start_state))
+        self.env.changeStartState(new_start_state)
+        print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
+
+    def changeGoal(self):
+        old_distance = self.env.distance_from_start_to_goal
+        terminal_state = self.env.terminal_state
+        new_terminal_state = self.getNewLocation()
+        print("old terminal state: {} new terminal state: {}".format(terminal_state, new_terminal_state))
+        self.env.changeTerminalState(new_terminal_state)
+        print("Old distance: {} New distance: {}".format(old_distance, self.env.distance_from_start_to_goal))
+
+    def getNewLocation(self):
+        terminal_state = self.env.terminal_state
+        start_state = self.env.start_state
+        col = randint(0, self.env.dimension - 1)
+        row = randint(0, self.env.dimension - 1)
+        while ((row, col) == terminal_state) or ((row, col) == start_state):
+            col = randint(0, self.env.dimension - 1)
+            row = randint(0, self.env.dimension - 1)
+        return row, col
+

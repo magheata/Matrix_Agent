@@ -102,28 +102,6 @@ class Controller:
         if (save_experiment == 'y') or (save_experiment == 'Y'):
             return self.save_model_results(samples_results)
 
-    def plot_experiment_results(self, steps_taken):
-        mean_steps = []
-        variance_steps = []
-        std_var_steps = []
-        for steps in steps_taken:
-            steps_array = np.array(steps)
-            if len(steps_array) is not 0:
-                print('Steps taken: {}'.format(steps))
-                mean_steps.append(steps_array.mean())
-                variance_steps.append(steps_array.var())
-                std_var_steps.append(steps_array.std())
-            else:
-                mean_steps.append(0)
-                variance_steps.append(0)
-                std_var_steps.append(0)
-
-        iterations_array = np.arange(start=1, stop=len(steps_taken) + 1)
-        graphService.plot_mean_steps(iterations_array, mean_steps)
-        graphService.plot_variance_steps(iterations_array, variance_steps)
-        graphService.plot_std_dev_steps(iterations_array, std_var_steps)
-        graphService.create_boxplot_actions(steps_taken)
-
     def show_experiment_results(self, df):
         show_results = input("Show experiment results? y/n: ")
         if (show_results == 'y') or (show_results == 'Y'):
@@ -134,11 +112,12 @@ class Controller:
         if self.experiment_type == ExperimentType.EPISODES:
             samples_results = self.experimentService.run_experiment_eps(self.episodes, self.iterations)
         elif self.experiment_type == ExperimentType.CHANGE_GOAL:
-            samples_results = self.experimentService.run_experiment_change_goal(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_change_location(self.episodes, self.iterations,
+                                                                                    False)
         elif self.experiment_type == ExperimentType.CHANGE_ORIGIN:
-            samples_results = self.experimentService.run_experiment_change_origin(self.episodes, self.iterations)
+            samples_results = self.experimentService.run_experiment_change_location(self.episodes, self.iterations,
+                                                                                    True)
         df = self.save_experiment_result(samples_results, self.use_existing_model)
-
         if not df.empty:
             self.show_experiment_results(df)
 
@@ -148,12 +127,12 @@ class Controller:
                                       now.strftime("%d_%m-%H_%M"))
         print(file_name)
         return self.saveExperiment(self.agent.requested_model,
-                            ExperimentType(0),
-                            self.agent.requested_model,
-                            self.episodes,
-                            self.iterations,
-                            samples_results,
-                            file_name + ".pkl")
+                                   ExperimentType(0),
+                                   self.agent.requested_model,
+                                   self.episodes,
+                                   self.iterations,
+                                   samples_results,
+                                   file_name + ".pkl")
 
     def readExperiment(self):
         onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
