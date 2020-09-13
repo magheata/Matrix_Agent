@@ -81,24 +81,30 @@ class ExperimentService:
         episode_results = []
         samples_results = {}
         steps_taken = []
+        start_positions = []
+        goal_positions = []
         for it in range(iterations):
             print("iteration", it)
             total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
                                                                                             Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved, episode_reward,
-                                                 self.env.distance_from_start_to_goal))
+            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved,
+                                                 episode_reward, self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
             samples_results[it] = episode_results
             episode_results = []
-        return samples_results
+            start_positions.append(self.env.start_state)
+            goal_positions.append(self.env.terminal_state)
+        return samples_results, start_positions, goal_positions
 
     def run_experiment_change_location(self, episodes, iterations, changeOrigin):
         changeLocation = False
         episode_results = []
         samples_results = {}
         steps_taken = []
+        start_positions = []
+        goal_positions = []
         for it in range(iterations):
             if np.random.rand() <= 0.5:
                 changeLocation = True
@@ -111,14 +117,17 @@ class ExperimentService:
             total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
                                                                                             Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
-            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved, episode_reward,
-                                                 self.env.distance_from_start_to_goal))
+            episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved,
+                                                 episode_reward, self.env.distance_from_start_to_goal))
             print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
             samples_results[it] = episode_results
             episode_results = []
             changeLocation = False
-        return samples_results
+            self.agent.save_model("model_it_{}".format(it), False)
+            start_positions.append(self.env.start_state)
+            goal_positions.append(self.env.terminal_state)
+        return samples_results, start_positions, goal_positions
 
     def changeOrigin(self):
         old_distance = self.env.distance_from_start_to_goal

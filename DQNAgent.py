@@ -1,4 +1,5 @@
 from __future__ import division
+
 import os
 import random
 import numpy as np
@@ -11,14 +12,14 @@ import tensorflow as tf
 
 
 class DQNAgent:
-    def __init__(self, controller, state_size, action_size, use_existing_model, requested_model):
+    def __init__(self, controller, state_size, action_size, use_existing_model, requested_model='', requested_model_path=''):
         self.controller = controller
         self.state_size = state_size
         self.dim = int(np.sqrt(self.state_size))
         self.action_size = action_size
         self.memory = deque(maxlen=2000)
         self.gamma = 0.95  # discount rate
-        self.epsilon = 0.2  # exploration rate
+        self.epsilon = 0.8  # exploration rate
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.99
         self.learning_rate = 0.01
@@ -27,7 +28,7 @@ class DQNAgent:
         self.target_model = self._build_model()
         self.requested_model = requested_model
         if use_existing_model:
-            self.load_weights("model/{}/{}".format(requested_model, requested_model))
+            self.load_weights(requested_model_path)
         self.update_target_model()
 
     def set_requested_model(self, requested_model):
@@ -94,16 +95,18 @@ class DQNAgent:
         target = self.model.predict(reshaped_state)
         return target
 
-    def save_model(self, model_name):
-        parent_directory = os.getcwd()
-        model_directory = "model"
-        path = os.path.join(parent_directory, model_directory)
-
-        if not os.path.isdir(os.path.join(path, model_name)):
-            os.mkdir(os.path.join(path, model_name))
-
-        self.requested_model = model_name
-        self.model.save("model/{}/{}".format(model_name, model_name), model_name, True)
+    def save_model(self, model_name, trained_model):
+        if trained_model:
+            parent_directory = os.getcwd()
+            model_directory = "model"
+            path = os.path.join(parent_directory, model_directory)
+            if not os.path.isdir(os.path.join(path, model_name)):
+                os.mkdir(os.path.join(path, model_name))
+            self.requested_model = model_name
+            model_path = "model/{}/{}".format(model_name, model_name)
+        else:
+            model_path = "model/{}".format(model_name)
+        self.model.save(model_path, model_name, True)
 
     def load_weights(self, requested_model):
         existing_model = tf.keras.models.load_model(requested_model, compile=False)

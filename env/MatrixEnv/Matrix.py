@@ -1,30 +1,14 @@
-import sys
 import numpy as np
 import gym
-import Constants
 
 from gym.vector.utils import spaces
 from scipy.spatial import distance
-from six import StringIO
 
 from Domain.Action import Action
 
-MAP = [
-    "+---------+",
-    "|_|_|_|_|_|",
-    "|_|_|_|_|_|",
-    "|_|_|_|_|_|",
-    "|_|_|_|_|_|",
-    "|_|_|_|_|_|",
-    "+---------+",
-]
-
 
 class Matrix(gym.Env):
-    metadata = {'render.modes': ['human']}
-
     def __init__(self):
-        self.desc = np.asarray(MAP, dtype='c')
         self.action_space = spaces.Discrete(len(list(map(int, Action))))
 
     def init_variables(self, dimension, start_state, terminal_state):
@@ -44,22 +28,6 @@ class Matrix(gym.Env):
         self.initial_state = self.s.copy()
         self.distance_from_start_to_goal = distance.cityblock(self.start_state, self.terminal_state)
         self.observation_space = spaces.Discrete(self.n_states)  # with absorbing state
-
-    def render(self, mode='human'):
-        outfile = StringIO() if mode == 'ansi' else sys.stdout
-
-        out = self.desc.copy().tolist()
-        out = [[c.decode('utf-8') for c in line] for line in out]
-        taxi_row, taxi_col = self.decode(self.s)
-
-        def ul(x): return "_" if x == " " else x
-
-        out[1 + taxi_row][2 * taxi_col + 1] = gym.utils.colorize(
-            ul(out[1 + taxi_row][2 * taxi_col + 1]), 'blue', highlight=True)
-
-        di, dj = self.dest_loc
-        out[1 + di][2 * dj + 1] = gym.utils.colorize(out[1 + di][2 * dj + 1], 'magenta', highlight=True)
-        outfile.write("\n".join(["".join(row) for row in out]) + "\n")
 
     def changeDimension(self, newDimension):
         self.init_variables(newDimension, self.start_state, self.terminal_state)
@@ -97,9 +65,6 @@ class Matrix(gym.Env):
     # endregion
 
     # region STEP
-    def step(self, action):
-        pass
-
     def step_action(self, action):
         assert self.action_space.contains(action)
         _row, _col = self.get_pos_components()
@@ -149,8 +114,13 @@ class Matrix(gym.Env):
         return 1 - (dist / float(self.max_length))
     # endregion
 
+    def step(self, action):
+        pass
+
     def reset(self):
         pass
 
-    def close(self):
+    def render(self, mode='human'):
         pass
+
+    metadata = {'render.modes': ['human']}
