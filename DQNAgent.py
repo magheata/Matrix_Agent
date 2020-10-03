@@ -19,7 +19,7 @@ class DQNAgent:
         self.action_size = action_size
         self.memory = deque(maxlen=2000)
         self.gamma = 0.95  # discount rate
-        self.epsilon = 0.8  # exploration rate
+        self.epsilon = 0.2 # exploration rate
         self.epsilon_min = 0.01
         self.epsilon_decay = 0.99
         self.learning_rate = 0.01
@@ -44,7 +44,7 @@ class DQNAgent:
         model.add(Dense(4, input_dim=self.state_size, activation='linear'))
         model.add(Dense(25, activation='linear'))
         model.add(Dense(25, activation='linear'))
-        model.add(Dense(4, activation='linear'))
+        model.add(Dense(4, activation='softmax'))
         model.compile(loss='mse', optimizer=Adam(lr=self.learning_rate, decay=self.alpha_decay))
 
         return model

@@ -16,6 +16,7 @@ class ExperimentService:
         solved_eps = 0
         steps_taken_for_completion = []
         episode_rewards = []
+        action_combinations_aux = {}
         for episode in range(episodes):
             actions = []
             env_states = []
@@ -34,6 +35,12 @@ class ExperimentService:
                     print('         - SOLVED! episode {}/{} steps taken: {} reward: {}'.format(episode, episodes,
                                                                                                len(actions), reward))
                     steps_taken_for_completion.append(len(actions))
+                    actions_key = tuple(actions)
+                    if actions_key in action_combinations_aux.keys():
+                        aux = action_combinations_aux[actions_key]
+                        action_combinations_aux[actions_key] = aux + 1
+                    else:
+                        action_combinations_aux[actions_key] = 1
                     solved_eps = solved_eps + 1
                     actions_enum = []
                     for i in actions:
@@ -46,7 +53,9 @@ class ExperimentService:
                 steps_taken_for_completion.append(steps)
             #self.predictActions()
             episode_rewards.append(episode_reward)
-        return solved_eps, steps_taken_for_completion, episode_rewards
+        action_combinations = {k: v for k, v in action_combinations_aux.items() if v >= 5}
+
+        return solved_eps, steps_taken_for_completion, episode_rewards, action_combinations
 
     def predictActions(self):
         map = np.zeros((5, 5))
@@ -85,11 +94,12 @@ class ExperimentService:
         goal_positions = []
         for it in range(iterations):
             print("iteration", it)
-            total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
+            total_solved, steps_taken_for_completion, episode_reward, action_combinations = self.compute_iteration(episodes,
                                                                                             Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved,
-                                                 episode_reward, self.env.distance_from_start_to_goal))
+                                                 episode_reward, self.env.distance_from_start_to_goal,
+                                                 action_combinations))
             print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
             samples_results[it] = episode_results
@@ -99,31 +109,27 @@ class ExperimentService:
         return samples_results, start_positions, goal_positions
 
     def run_experiment_change_location(self, episodes, iterations, changeOrigin):
-        changeLocation = False
         episode_results = []
         samples_results = {}
         steps_taken = []
         start_positions = []
         goal_positions = []
         for it in range(iterations):
-            if np.random.rand() <= 0.5:
-                changeLocation = True
-            if changeLocation:
-                if changeOrigin:
-                    self.changeOrigin()
-                else:
-                    self.changeGoal()
+            if changeOrigin:
+                self.changeOrigin()
+            else:
+                self.changeGoal()
             print("iteration", it)
-            total_solved, steps_taken_for_completion, episode_reward = self.compute_iteration(episodes,
+            total_solved, steps_taken_for_completion, episode_reward, action_combinations = self.compute_iteration(episodes,
                                                                                             Constants.MAX_STEPS)
             steps_taken.append(steps_taken_for_completion)
             episode_results.append(EpisodeResult(episodes, steps_taken_for_completion, total_solved,
-                                                 episode_reward, self.env.distance_from_start_to_goal))
+                                                 episode_reward, self.env.distance_from_start_to_goal,
+                                                 action_combinations))
             print("episodes: {} total_solved: {} total reward: {}".format(episodes, total_solved, episode_reward))
             print("\n\n")
             samples_results[it] = episode_results
             episode_results = []
-            changeLocation = False
             self.agent.save_model("model_it_{}".format(it), False)
             start_positions.append(self.env.start_state)
             goal_positions.append(self.env.terminal_state)

@@ -21,7 +21,7 @@ class Controller:
 
     def __init__(self, dimension=0, episodes=0, iterations=0, experiment_type=ExperimentType.EPISODES):
         if dimension != 0 and dimension != -1:
-            self.env = self.createEnvironment(dimension, (0, 0), (7, 7))
+            self.env = self.createEnvironment(dimension)
             self.agent, self.use_existing_model = self.createAgent(self.env)
             self.agent.save_model(self.new_model_name, False)
             self.episodes = episodes
@@ -160,10 +160,6 @@ class Controller:
         new_model = datetime.now().strftime("%d-%m_%H-%M-%S")
         self.new_model_name = new_model
         return _agent, use_existing_model
-
-    def listExistingModels(self):
-        total_models = len(os.listdir(os.getcwd() + '/model'))
-        onlyfiles = [f for f in listdir(os.getcwd() + '/model')]
 
     def saveExperiment(self, parentDirectory, experimentType, modelUsed, episodes, iterations, dimension, start_pos,
                        goal_pos, episode_results, file_name, requested_model_path=''):
