@@ -1,3 +1,3 @@
-# Matrix_Agent
+# Resolución de un problema de búsqueda mediante la aplicación del aprendizaje por refuerzo
 
-Added Q-learning implementation
+En este Trabajo de Final de Grado del Grado de Ingeniería Informática se realiza un estudio y una  experimentación  sobre  la  aplicación  de  los  algoritmos  de  aprendizaje  automático  por refuerzo en problemas de búsqueda. El problema tratado consiste en **crear un agente inteligente** que se encuentra en un entorno y que debe ser capaz de alcanzar un objetivo concreto dentro del mismo aplicando los algoritmos de *aprendizaje por refuerzo*. La experimentación se lleva a cabo de manera exhaustiva para determinar el rendimiento del agente resultante y observar si realmente se ha desarrollado un agente que ha aprendido a moverse sólo por el entorno para encontrar su objetivo. Se han realizado 5 experimentos diferentes en los que se han modificado la posición inicial del agente y la posición del objetivo dentro del entorno y los parámetros de learning ratey exploration ratedel algoritmo interno de aprendizaje del agente.
